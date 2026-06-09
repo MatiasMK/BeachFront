@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dqs84q426t0ye"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0aqxyf608itk" path="res://assets/models/Floor/arena_Cube.res" id="1_sgnql"]
+[ext_resource type="ArrayMesh" uid="uid://biu6x6578wnwj" path="res://assets/models/Floor/agua_Cube.res" id="2_aeifa"]
+
+[node name="FloorLibrary" type="Node3D" unique_id=879977431]
+
+[node name="Sand" type="MeshInstance3D" parent="." unique_id=571228492]
+mesh = ExtResource("1_sgnql")
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=647225144]
+mesh = ExtResource("2_aeifa")
