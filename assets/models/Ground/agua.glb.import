@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wvfc5r7krh8l"
-path="res://.godot/imported/arena.glb-41c5485a2fa7645e7a7821998f29092d.scn"
+uid="uid://clfykefm2rkra"
+path="res://.godot/imported/agua.glb-a5585ad83a48b1976d051f6ef61df13e.scn"
 
 [deps]
 
-source_file="res://assets/models/Floor/arena.glb"
-dest_files=["res://.godot/imported/arena.glb-41c5485a2fa7645e7a7821998f29092d.scn"]
+source_file="res://assets/models/Ground/agua.glb"
+dest_files=["res://.godot/imported/agua.glb-a5585ad83a48b1976d051f6ef61df13e.scn"]
 
 [params]
 
@@ -39,14 +39,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"arena_Cube": {
+"agua_Cube": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/models/Floor/arena_Cube.res",
-"save_to_file/path": "uid://b0aqxyf608itk"
+"save_to_file/fallback_path": "res://assets/models/Ground/agua_Cube.res",
+"save_to_file/path": "uid://biu6x6578wnwj"
 }
 }
 }

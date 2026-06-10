@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://clfykefm2rkra"
-path="res://.godot/imported/agua.glb-3969f4ad05dcc3040582b741d25c2364.scn"
+uid="uid://bnxxqmmca8rol"
+path="res://.godot/imported/tile_overlay.glb-631163bde0f418b74eec276df42c3458.scn"
 
 [deps]
 
-source_file="res://assets/models/Floor/agua.glb"
-dest_files=["res://.godot/imported/agua.glb-3969f4ad05dcc3040582b741d25c2364.scn"]
+source_file="res://assets/models/Ground/tile_overlay.glb"
+dest_files=["res://.godot/imported/tile_overlay.glb-631163bde0f418b74eec276df42c3458.scn"]
 
 [params]
 
@@ -39,14 +39,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"agua_Cube": {
+"tile_overlay_Plane": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/models/Floor/agua_Cube.res",
-"save_to_file/path": "uid://biu6x6578wnwj"
+"save_to_file/fallback_path": "res://assets/models/Ground/tile_overlay_Plane.res",
+"save_to_file/path": "uid://bmi0te8qhxs4i"
 }
 }
 }

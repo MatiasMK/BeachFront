@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dqs84q426t0ye"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0aqxyf608itk" path="res://assets/models/Ground/arena_Cube.res" id="1_vx8wr"]
+[ext_resource type="ArrayMesh" uid="uid://biu6x6578wnwj" path="res://assets/models/Ground/agua_Cube.res" id="2_kccub"]
+[ext_resource type="ArrayMesh" uid="uid://bmi0te8qhxs4i" path="res://assets/models/Ground/tile_overlay_Plane.res" id="3_fukf3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fukf3"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.54901963)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmx4r"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.54901963)
+
+[node name="FloorLibrary" type="Node3D" unique_id=879977431]
+
+[node name="Sand" type="MeshInstance3D" parent="." unique_id=571228492]
+mesh = ExtResource("1_vx8wr")
+
+[node name="Water" type="MeshInstance3D" parent="." unique_id=647225144]
+mesh = ExtResource("2_kccub")
+
+[node name="ValidTile" type="MeshInstance3D" parent="." unique_id=351271042]
+mesh = ExtResource("3_fukf3")
+surface_material_override/0 = SubResource("StandardMaterial3D_fukf3")
+
+[node name="InvalidTile" type="MeshInstance3D" parent="." unique_id=667815183]
+mesh = ExtResource("3_fukf3")
+surface_material_override/0 = SubResource("StandardMaterial3D_rmx4r")
