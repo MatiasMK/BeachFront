@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cjbw6a27hy6tq"]
+
+[ext_resource type="Script" uid="uid://djvedext62cu7" path="res://assets/models/Tetris/smashboy.gd" id="1_glewi"]
+[ext_resource type="PackedScene" uid="uid://5eyep73be7mf" path="res://assets/models/Tetris/smashboi.glb" id="2_h4r5t"]
+
+[node name="Smashboy" type="StaticBody3D" unique_id=1764746343]
+script = ExtResource("1_glewi")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="smashboi" parent="." unique_id=1394656996 instance=ExtResource("2_h4r5t")]

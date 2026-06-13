@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bo06wmdhhngmd"]
+
+[ext_resource type="Script" uid="uid://bpjm4oq4at5c4" path="res://assets/models/Ground/ground_library_test.gd" id="1_jok3s"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3ra26"]
+resource_local_to_scene = true
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jok3s"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e40pm"]
+size = Vector3(1, 0.01, 1)
+
+[node name="FloorLibrary" type="Area3D" unique_id=200021011]
+script = ExtResource("1_jok3s")
+
+[node name="Sand" type="MeshInstance3D" parent="." unique_id=571228492]
+mesh = SubResource("PlaneMesh_3ra26")
+surface_material_override/0 = SubResource("StandardMaterial3D_jok3s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1960584237]
+shape = SubResource("BoxShape3D_e40pm")
