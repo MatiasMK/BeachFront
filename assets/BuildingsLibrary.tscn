@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ebw8ui2l2wf5" path="res://assets/models/Tetris/hero_Cube.res" id="3_h1yst"]
 [ext_resource type="ArrayMesh" uid="uid://bkq3ewk2nu7kj" path="res://assets/models/Tetris/orangericky_Cube.res" id="4_0c68p"]
 [ext_resource type="ArrayMesh" uid="uid://f7tkphm6btc4" path="res://assets/models/Tetris/rhodez_Cube.res" id="5_67idf"]
-[ext_resource type="ArrayMesh" uid="uid://iq6lqhgpsjs6" path="res://assets/models/Tetris/smashboi_Cube.res" id="6_6sv74"]
+[ext_resource type="ArrayMesh" uid="uid://nqq3vgflbjt5" path="res://assets/models/Buildings/Hotel_Cube_012.res" id="6_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://cqrfudo16n7yx" path="res://assets/models/Tetris/teewee_Cube.res" id="7_du12g"]
 
 [node name="Node3D" type="Node3D" unique_id=1888715653]
@@ -26,7 +26,7 @@ mesh = ExtResource("4_0c68p")
 mesh = ExtResource("5_67idf")
 
 [node name="SmashBoi" type="MeshInstance3D" parent="." unique_id=942666511]
-mesh = ExtResource("6_6sv74")
+mesh = ExtResource("6_sf31a")
 
 [node name="Teewee" type="MeshInstance3D" parent="." unique_id=2071285541]
 mesh = ExtResource("7_du12g")
