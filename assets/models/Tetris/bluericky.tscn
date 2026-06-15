@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dg4g8p8ypg8uh"]
+
+[ext_resource type="Script" uid="uid://tqt5ynekry6y" path="res://assets/models/Tetris/bluericky.gd" id="1_pfq4y"]
+[ext_resource type="PackedScene" uid="uid://con3ge047w4l" path="res://assets/models/Tetris/bluericky.glb" id="2_h3jr1"]
+
+[node name="Bluericky" type="StaticBody3D" unique_id=418935866]
+script = ExtResource("1_pfq4y")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="bluericky" parent="." unique_id=2076249233 instance=ExtResource("2_h3jr1")]
