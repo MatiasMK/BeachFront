@@ -4,9 +4,21 @@ extends Node3D
 
 const SMASHBOY = preload("uid://cjbw6a27hy6tq")
 const BLUERICKY = preload("uid://dg4g8p8ypg8uh")
+const SPA = preload("uid://biawoa84ynn1c")
+const TEEWEE = preload("uid://6oowpa64cir8")
 
 var object
 var _last_print: int = 0
+var _overlay_green: Material
+var _overlay_red: Material
+
+func _ready() -> void:
+	_overlay_green = StandardMaterial3D.new()
+	_overlay_green.albedo_color = Color(0, 1, 0, 0.3)
+	_overlay_green.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_overlay_red = StandardMaterial3D.new()
+	_overlay_red.albedo_color = Color(1, 0, 0, 0.3)
+	_overlay_red.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 
 func _should_print() -> bool:
 	var now = Time.get_ticks_msec()
@@ -17,7 +29,7 @@ func _should_print() -> bool:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_mouse_click") and not object:
-		var buildings = [SMASHBOY,BLUERICKY]
+		var buildings = [SMASHBOY,BLUERICKY,TEEWEE,SPA]
 		var newPlacement = buildings.pick_random().instantiate()
 		add_child(newPlacement)
 		object = newPlacement
@@ -38,7 +50,10 @@ func _process(delta: float) -> void:
 		
 		_reset_highlight()
 		var cells = _get_object_cells()
-		_check_and_highlight_cells(cells)
+		var valid = _check_and_highlight_cells(cells)
+		_set_block_overlay(_overlay_green if valid else _overlay_red)
+	else:
+		_set_block_overlay(null)
 
 func _get_grid_position():
 	var mousePositionDepth = 100
@@ -124,7 +139,12 @@ func _check_and_highlight_cells(objectCells: Array):
 
 	return isValid
 
+func _set_block_overlay(material: Material):
+	for mesh in object.find_children("*", "MeshInstance3D", true):
+		mesh.material_override = material
+
 func _place_placement(objectCells):
+	_set_block_overlay(null)
 	object = null
 
 	for cell in objectCells:

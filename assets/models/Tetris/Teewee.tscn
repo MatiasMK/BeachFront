@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6oowpa64cir8"]
+
+[ext_resource type="Script" uid="uid://bljyuh3qusgdl" path="res://assets/models/Tetris/teewee.gd" id="1_3ahck"]
+[ext_resource type="PackedScene" uid="uid://dgin248cg77b8" path="res://assets/models/Buildings/Restaurant.glb" id="2_3ahck"]
+
+[node name="Teewee" type="StaticBody3D" unique_id=1043103181]
+script = ExtResource("1_3ahck")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="Restaurant" parent="." unique_id=1761508720 instance=ExtResource("2_3ahck")]
