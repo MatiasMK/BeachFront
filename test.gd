@@ -27,6 +27,11 @@ func _should_print() -> bool:
 		return true
 	return false
 
+func start_placement(scene: PackedScene) -> void:
+	var new_placement = scene.instantiate()
+	add_child(new_placement)
+	object = new_placement
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_mouse_click") and not object:
 		var buildings = [SMASHBOY,BLUERICKY,TEEWEE,SPA]
