@@ -1,12 +1,13 @@
 extends Node3D
 
 @export var hover_material: Material
-@onready var ground_grid_map: GridMap = $GroundGridMap
 @onready var cam = $Camera3D
+@onready var ground_grid_map: GridMap = $GroundGridMap
 
 var current_cell: Vector3i = Vector3i.ZERO
 var previous_cell: Vector3i = Vector3i.ZERO
 var cell_has_hover: bool = false
+var accept_input : bool = false # cuando esta corriendo el dialogo o el menu de pausa, false
 
 func _physics_process(_delta):
 	# Cast a ray from the camera to the mouse position
@@ -41,3 +42,12 @@ func highlight_tile(cell_pos: Vector3i):
 func reset_previous_tile():
 	cell_has_hover = not cell_has_hover
 	ground_grid_map.set_cell_item(Vector3i(previous_cell.x,1,previous_cell.z),-1)
+
+func start_phase(phase : int):
+	accept_input = true
+
+func _input(event: InputEvent) -> void:
+	if accept_input:
+		if event.is_action_pressed("move_cam"):
+			cam.switch_spot()
+	

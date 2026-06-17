@@ -3,10 +3,10 @@
 [ext_resource type="ArrayMesh" uid="uid://qfkup3aio1iq" path="res://assets/models/Tetris/bluericky_Cube.res" id="1_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://cgb0lgw0ley6y" path="res://assets/models/Tetris/clevelandz_Cube.res" id="2_ri1er"]
 [ext_resource type="ArrayMesh" uid="uid://ebw8ui2l2wf5" path="res://assets/models/Tetris/hero_Cube.res" id="3_h1yst"]
-[ext_resource type="ArrayMesh" uid="uid://bkq3ewk2nu7kj" path="res://assets/models/Tetris/orangericky_Cube.res" id="4_0c68p"]
-[ext_resource type="ArrayMesh" uid="uid://tdp0csecwn8" path="res://assets/models/Buildings/Spa_Cube_014.res" id="5_sf31a"]
+[ext_resource type="ArrayMesh" uid="uid://cs2wvjb7lwajd" path="res://assets/models/Buildings/TennisCourt_Cube_004.res" id="4_sf31a"]
+[ext_resource type="ArrayMesh" uid="uid://cxwj5u7iotrp6" path="res://assets/models/Buildings/Spa_Cube_014.res" id="5_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://c3qblxecbnhmi" path="res://assets/models/Buildings/Hotel_Cube_012.res" id="6_sf31a"]
-[ext_resource type="ArrayMesh" uid="uid://mg5yl74hmfwj" path="res://assets/models/Buildings/Restaurant_Cube_013.res" id="7_sf31a"]
+[ext_resource type="ArrayMesh" uid="uid://b1bp8ydbe1m6n" path="res://assets/models/Buildings/Restaurant_Cube_013.res" id="7_sf31a"]
 
 [node name="Node3D" type="Node3D" unique_id=1888715653]
 
@@ -20,7 +20,7 @@ mesh = ExtResource("2_ri1er")
 mesh = ExtResource("3_h1yst")
 
 [node name="OrangeRicky" type="MeshInstance3D" parent="." unique_id=248096871]
-mesh = ExtResource("4_0c68p")
+mesh = ExtResource("4_sf31a")
 
 [node name="Spa" type="MeshInstance3D" parent="." unique_id=784158235]
 mesh = ExtResource("5_sf31a")

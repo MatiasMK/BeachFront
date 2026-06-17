@@ -1,0 +1,34 @@
+[
+	{ 
+		"phase": "1",
+		"dialogue": 
+		[
+			{
+				"speaker":"beachfront",
+				"text": "old man yaoi"
+			},
+			{
+				"speaker":"evil santa claus",
+				"text": "hohoho >:)"
+			},
+			{
+				"speaker":"papu",
+				"text": "no se que poner"
+			},
+			{
+				"speaker":"beachfront",
+				"text": "somos malos en realidad muajaja"
+			}
+		]
+	},
+	{ 
+		"phase": "2",
+		"dialogue": 
+		[
+			{
+				"speaker":"beachfront",
+				"text": "dsvfdfdg"
+			}
+		]
+	}
+]

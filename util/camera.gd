@@ -25,8 +25,3 @@ func switch_spot():
 	tween.tween_property(self, "global_rotation", rotations[curr_spot], duration) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)
-	print(self.global_rotation)
-	print(self.rotation)
-func _input(event : InputEvent):
-	if event.is_action_pressed("move_cam"):
-		switch_spot()
