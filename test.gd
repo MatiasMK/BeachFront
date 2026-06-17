@@ -28,17 +28,17 @@ func _should_print() -> bool:
 	return false
 
 func start_placement(scene: PackedScene) -> void:
-	var new_placement = scene.instantiate()
-	add_child(new_placement)
-	object = new_placement
+	var newPlacement = scene.instantiate()
+	add_child(newPlacement)
+	object = newPlacement
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("left_mouse_click") and not object:
-		var buildings = [SMASHBOY,BLUERICKY,TEEWEE,SPA]
-		var newPlacement = buildings.pick_random().instantiate()
-		add_child(newPlacement)
-		object = newPlacement
-	elif Input.is_action_just_pressed("left_mouse_click") and object:
+	#if Input.is_action_just_pressed("left_mouse_click") and not object:
+	#	var buildings = [SMASHBOY,BLUERICKY,TEEWEE,SPA]
+	#	var newPlacement = buildings.pick_random().instantiate()
+	#	add_child(newPlacement)
+	#	object = newPlacement
+	if Input.is_action_just_pressed("left_mouse_click") and object:
 		var click_pos = _get_grid_position()
 		if click_pos:
 			object.global_position = click_pos

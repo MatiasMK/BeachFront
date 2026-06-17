@@ -5,6 +5,5 @@
 
 [node name="Spa" type="StaticBody3D" unique_id=221840088]
 script = ExtResource("1_2augk")
-offset = Vector3(0.5, 0, 0.5)
 
 [node name="Spa" parent="." unique_id=993024174 instance=ExtResource("2_8o500")]

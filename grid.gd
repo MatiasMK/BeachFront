@@ -20,10 +20,12 @@ extends Node3D
 
 const GROUND_LIBRARY_TEST = preload("uid://bo06wmdhhngmd")
 
+## Deletes grid.
 func _remove_grid():
 	for node in get_children():
 		node.queue_free()
 
+## Creates grid.
 func _create_grid():
 	for height in range(gridHeight):
 		for width in range(gridWidth):
