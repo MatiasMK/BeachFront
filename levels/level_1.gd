@@ -63,7 +63,6 @@ func start_phase(phase : int):
 		tween.tween_property($WorldEnvironment.environment, "glow_bloom", 1,2) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)
-	accept_input = true
 
 func set_accept_input(val):
 	accept_input = val
