@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bk02qeldhp3g7"
-path="res://.godot/imported/LittlePlant.glb-769d13e14ed6341344686fd7f4ed95ea.scn"
+uid="uid://y7y2ytb416mp"
+path="res://.godot/imported/BiggerPlant.glb-86ef5ebe1495e78ee24100c0a04969ab.scn"
 
 [deps]
 
-source_file="res://assets/models/Plants/LittlePlant.glb"
-dest_files=["res://.godot/imported/LittlePlant.glb-769d13e14ed6341344686fd7f4ed95ea.scn"]
+source_file="res://assets/models/Plants/BiggerPlant.glb"
+dest_files=["res://.godot/imported/BiggerPlant.glb-86ef5ebe1495e78ee24100c0a04969ab.scn"]
 
 [params]
 
@@ -39,14 +39,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"LittlePlant_Plane_025": {
+"BiggerPlant_Cylinder_004": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/models/Plants/LittlePlant_Plane_025.res",
-"save_to_file/path": "uid://cwfcg14okf2d5"
+"save_to_file/fallback_path": "res://assets/models/Plants/BiggerPlant_Cylinder_004.res",
+"save_to_file/path": "uid://bykog8mqeua4y"
 }
 }
 }
