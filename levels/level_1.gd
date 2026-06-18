@@ -2,7 +2,7 @@ extends Node3D
 
 @export var hover_material: Material
 @onready var cam = $Camera3D
-@onready var ground_grid_map: GridMap = $GroundGridMap
+@onready var ground_grid_map: GridMap = $LevelGrid/GroundGridMap
 
 var current_cell: Vector3i = Vector3i.ZERO
 var previous_cell: Vector3i = Vector3i.ZERO

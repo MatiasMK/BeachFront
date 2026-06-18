@@ -1,5 +1,7 @@
 extends Node3D
 
+## Gridmap of all blocked cells.
+@export var obstacles: GridMap
 @onready var grid: Node3D = $Grid
 
 var object
@@ -40,7 +42,7 @@ func _input(event: InputEvent) -> void:
 			## Based on mouse position, get cell candidates for placement.
 			var cells = _get_object_cells()
 			## Higlight candidate cells. And check if placement is posible.
-			if _check_and_highlight_cells(cells):
+			if _check_cells(cells):
 				_place_placement(cells)
 
 func _process(delta: float) -> void:
@@ -52,11 +54,10 @@ func _process(delta: float) -> void:
 		## Set object to follow the mouse.
 		object.global_position = mouseGridPosition
 
-		_reset_highlight()
 		## Get cell candidates for placement.
 		var cells = _get_object_cells()
 		## Highlight candidate cells. And check if placement is posible.
-		var valid = _check_and_highlight_cells(cells)
+		var valid = _check_cells(cells)
 		## Set object overlay to red (unplaceable) or green (placeable).
 		_set_block_overlay(_overlay_green if valid else _overlay_red)
 
@@ -92,11 +93,6 @@ func _get_grid_position():
 		grid.global_position.z + row * grid.cellSize.y
 	)
 
-## Reset cell highlights.
-func _reset_highlight():
-	for child in grid.get_children():
-		child.change_color(grid.defaultColor)
-
 ## Get the candidate cells for the placement of the current object.
 func _get_object_cells():
 	var cells := [] ## Var to return, list of candidate cells.
@@ -119,21 +115,13 @@ func _get_object_cells():
 	return cells
 
 ## Checks if the cells given are occupied. And changes their color acordingly.
-func _check_and_highlight_cells(objectCells: Array):
+func _check_cells(objectCells: Array):
 	var expected = object.get_cell_offsets().size()
 
 	if objectCells.size() != expected:
-		for cell in objectCells:
-			cell.change_color(Color.RED)
 		return false
 
 	var isValid = true
-	for cell in objectCells:
-		if cell.full:
-			isValid = false
-			cell.change_color(Color.RED)
-		else:
-			cell.change_color(Color.GREEN)
 
 	return isValid
 
@@ -151,5 +139,3 @@ func _place_placement(objectCells):
 	## Set all cell candidates to full.
 	for cell in objectCells:
 		cell.full = true
-	## Reset all highlights.
-	_reset_highlight()

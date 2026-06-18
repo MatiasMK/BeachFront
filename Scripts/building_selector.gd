@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var test: Node3D = $".."
+@onready var placementGrid: Node3D = $".."
 
 ## List of possible buildings, links to their scenes.
 const BUILDINGS = {
@@ -32,5 +32,5 @@ func _ready() -> void:
 
 func _on_building_selected(scene: PackedScene) -> void:
 	## Starts the placing process with the given building.
-	if test.object == null:
-		test.start_placement(scene)
+	if placementGrid.object == null:
+		placementGrid.start_placement(scene)
