@@ -44,7 +44,29 @@ func reset_previous_tile():
 	ground_grid_map.set_cell_item(Vector3i(previous_cell.x,1,previous_cell.z),-1)
 
 func start_phase(phase : int):
+	if phase == 1:
+		$Phase1Music.play()
+	elif phase == 2:
+		$Phase1Music.stop()
+		$Phase2Music.play()
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.tween_property($DirectionalLight3D, "light_color", Color(0.001, 0.238, 0.825, 1.0),2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
+		tween.tween_property($DirectionalLight3D, "light_energy", 0.7,2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
+		tween.tween_property($WorldEnvironment.environment, "background_color", Color(0.2,0.2,0.4),2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
+		tween.tween_property($WorldEnvironment.environment, "glow_bloom", 1,2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
 	accept_input = true
+
+func set_accept_input(val):
+	accept_input = val
 
 func _input(event: InputEvent) -> void:
 	if accept_input:

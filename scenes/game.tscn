@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://xs02rge5wq75" path="res://assets/ui/SEGOESC.TTF" id="4_p57ef"]
 [ext_resource type="Script" uid="uid://dmbl0l8eqsxcc" path="res://util/dialogue.gd" id="4_u5sy4"]
 [ext_resource type="Script" uid="uid://d0mdiwhk1dghh" path="res://scenes/music_vol_slider.gd" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://1asgcmal55jt" path="res://scenes/main_menu.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node" unique_id=479065853]
 script = ExtResource("1_lbhrr")
@@ -210,3 +211,5 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_p57ef")
 theme_override_font_sizes/font_size = 31
 text = "Pause"
+
+[node name="MainMenu" parent="UI" unique_id=1159424639 instance=ExtResource("6_p57ef")]

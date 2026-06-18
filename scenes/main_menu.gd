@@ -1,6 +1,6 @@
 extends Control
 
-signal on_play
+signal play_pressed
 
 @onready var options = $Options
 
@@ -10,7 +10,7 @@ func _ready():
 	$Buttons/ExitButton.pressed.connect(_on_exit_pressed)
 	
 func _on_play_pressed():
-	on_play.emit()
+	play_pressed.emit()
 
 func _on_options_pressed():
 	options.visible = true

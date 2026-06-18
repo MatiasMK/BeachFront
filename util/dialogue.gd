@@ -10,6 +10,7 @@ var ph2_dialogue = null
 var dialogue_index = 0
 
 var dialogue_is_running = false
+var accept_input = false
 
 signal dialogue_end
 
@@ -29,7 +30,6 @@ func load_dialogue(level_ind):
 		ph1_dialogue = content[0]["dialogue"]
 		ph2_dialogue = content[1]["dialogue"]
 		
-
 func readJSON(json_file_path):
 	var file = FileAccess.open(json_file_path, FileAccess.READ)
 	var content = file.get_as_text()
@@ -37,7 +37,7 @@ func readJSON(json_file_path):
 	return finish
 	
 func _input(event: InputEvent) -> void:
-	if dialogue_is_running:
+	if accept_input and dialogue_is_running:
 		if event.is_action_pressed("advance_dialogue"):
 			on_advance_dialogue()
 	else:
@@ -46,6 +46,7 @@ func _input(event: InputEvent) -> void:
 		
 func run_dialogue(level,phase):
 	dialogue_is_running = true
+	accept_input = true
 	curr_level = level
 	curr_phase = phase
 	on_advance_dialogue()
