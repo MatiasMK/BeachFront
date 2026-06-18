@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjur2ys45yh44"
-path="res://.godot/imported/Hotel_Hotel.png-2ac2d9e03286e0434059cbf304f2b406.ctex"
+uid="uid://b0w0qyxmsarr"
+path.s3tc="res://.godot/imported/Hotel_TennisCourt.png-92d97d51f609d213846bdcac25f27568.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "14a97c12eef558d681f00d00a41d1177"
+"md5": "a88464fd1acc1bed6b1693a7757b7e94"
 }
 
 [deps]
 
-source_file="res://assets/models/Buildings/Hotel_Hotel.png"
-dest_files=["res://.godot/imported/Hotel_Hotel.png-2ac2d9e03286e0434059cbf304f2b406.ctex"]
+source_file="res://assets/models/Buildings/Hotel_TennisCourt.png"
+dest_files=["res://.godot/imported/Hotel_TennisCourt.png-92d97d51f609d213846bdcac25f27568.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

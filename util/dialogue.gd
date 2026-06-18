@@ -23,7 +23,6 @@ var curr_phase = 0
 	
 func load_dialogue(level_ind):
 	var content = readJSON(levels[level_ind])
-	print("type ",typeof(content))
 	if typeof(content) != TYPE_ARRAY:
 		print("error loading dialogue")
 	else:
@@ -34,8 +33,7 @@ func load_dialogue(level_ind):
 func readJSON(json_file_path):
 	var file = FileAccess.open(json_file_path, FileAccess.READ)
 	var content = file.get_as_text()
-	var json = JSON.new()
-	var finish = json.parse_string(content)
+	var finish = JSON.parse_string(content)
 	return finish
 	
 func _input(event: InputEvent) -> void:

@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjur2ys45yh44"
-path="res://.godot/imported/Hotel_Hotel.png-2ac2d9e03286e0434059cbf304f2b406.ctex"
+uid="uid://beviagegweytq"
+path.s3tc="res://.godot/imported/Hotel_Restaurant.png-e13f097e1819fcc1d31f7e610d289352.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "14a97c12eef558d681f00d00a41d1177"
+"md5": "402a7b2f47d1da1b3751dbe12d7a19e3"
 }
 
 [deps]
 
-source_file="res://assets/models/Buildings/Hotel_Hotel.png"
-dest_files=["res://.godot/imported/Hotel_Hotel.png-2ac2d9e03286e0434059cbf304f2b406.ctex"]
+source_file="res://assets/models/Buildings/Hotel_Restaurant.png"
+dest_files=["res://.godot/imported/Hotel_Restaurant.png-e13f097e1819fcc1d31f7e610d289352.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

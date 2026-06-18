@@ -1,22 +1,15 @@
 [gd_scene format=3 uid="uid://bkvdwlmou0q6"]
 
 [ext_resource type="Script" uid="uid://c500m2jahku71" path="res://scenes/game.gd" id="1_lbhrr"]
-[ext_resource type="Script" uid="uid://f4vw5qm6g0kl" path="res://util/camera.gd" id="2_iywne"]
-[ext_resource type="PackedScene" uid="uid://5tsd4m3l21kt" path="res://levels/level_1.tscn" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cjyatoi0hqvck" path="res://assets/ui/placeholderbutton.png" id="3_iywne"]
+[ext_resource type="FontFile" uid="uid://xs02rge5wq75" path="res://assets/ui/SEGOESC.TTF" id="4_p57ef"]
 [ext_resource type="Script" uid="uid://dmbl0l8eqsxcc" path="res://util/dialogue.gd" id="4_u5sy4"]
+[ext_resource type="Script" uid="uid://d0mdiwhk1dghh" path="res://scenes/music_vol_slider.gd" id="5_u5sy4"]
 
 [node name="Game" type="Node" unique_id=479065853]
 script = ExtResource("1_lbhrr")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1050930628]
-rotation_order = 0
-current = true
-fov = 50.0
-script = ExtResource("2_iywne")
-
 [node name="LevelContainer" type="Node" parent="." unique_id=2127534515]
-
-[node name="Level1" parent="LevelContainer" unique_id=545757318 instance=ExtResource("3_p57ef")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2091976638]
 
@@ -62,7 +55,7 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LoadingScreen" type="Control" parent="UI" unique_id=1377194824]
+[node name="PauseMenu" type="Control" parent="UI" unique_id=356905051]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -71,27 +64,149 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/LoadingScreen" unique_id=1111181838]
+[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu" unique_id=1723457552]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = 200.0
+offset_right = -400.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("3_iywne")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="UI/LoadingScreen" unique_id=1658800888]
+[node name="Resume" type="TextureButton" parent="UI/PauseMenu/TextureRect" unique_id=1371457317]
+custom_minimum_size = Vector2(120, 35)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -60.0
+offset_top = 26.0
+offset_right = 60.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 27
-text = "Loading..."
+texture_normal = ExtResource("3_iywne")
+texture_pressed = ExtResource("3_iywne")
+texture_hover = ExtResource("3_iywne")
+texture_disabled = ExtResource("3_iywne")
+texture_focused = ExtResource("3_iywne")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/PauseMenu/TextureRect/Resume" unique_id=1640771211]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -19.5
+offset_right = 31.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_p57ef")
+theme_override_font_sizes/font_size = 18
+text = "Resume"
+vertical_alignment = 1
+
+[node name="MusicVolLabel" type="Label" parent="UI/PauseMenu/TextureRect" unique_id=1647327963]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -40.0
+offset_right = -13.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_p57ef")
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="UI/PauseMenu/TextureRect" unique_id=1393036336]
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -10.0
+offset_right = 125.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("5_u5sy4")
+bus_name = "music"
+
+[node name="Quit" type="TextureButton" parent="UI/PauseMenu/TextureRect" unique_id=1883530787]
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 64.0
+offset_right = 60.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_iywne")
+texture_pressed = ExtResource("3_iywne")
+texture_hover = ExtResource("3_iywne")
+texture_disabled = ExtResource("3_iywne")
+texture_focused = ExtResource("3_iywne")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/PauseMenu/TextureRect/Quit" unique_id=1844044180]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -19.5
+offset_right = 31.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_p57ef")
+theme_override_font_sizes/font_size = 18
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/PauseMenu" unique_id=1139273111]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -92.0
+offset_right = 25.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_p57ef")
+theme_override_font_sizes/font_size = 31
+text = "Pause"

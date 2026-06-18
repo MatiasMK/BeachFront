@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d1hwo7hqjur0h" path="res://assets/ui/18b6c360-4a21-49cb-add8-8d143da808e3_scaled.jpg" id="1_d2nv2"]
 [ext_resource type="Script" uid="uid://djropfltrjq2n" path="res://scenes/main_menu.gd" id="1_jix8l"]
 [ext_resource type="FontFile" uid="uid://xs02rge5wq75" path="res://assets/ui/SEGOESC.TTF" id="3_wgsso"]
+[ext_resource type="PackedScene" uid="uid://bg2k1p7ds3j7y" path="res://scenes/options.tscn" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://cb0gf4wu3bbaf" path="res://assets/music/DavidKBD - Tropical Pack - 13 - Blooming Flowers - Acoustic.ogg" id="6_rtw2f"]
 
 [sub_resource type="Gradient" id="Gradient_d2nv2"]
 colors = PackedColorArray(0.23137255, 0.4509804, 0.654902, 1, 0.23040001, 0.4352, 0.64, 0)
@@ -21,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jix8l")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=544979561]
+[node name="Background" type="TextureRect" parent="." unique_id=544979561]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +34,7 @@ texture = ExtResource("1_d2nv2")
 stretch_mode = 4
 flip_h = true
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1419616114]
+[node name="BGGradient" type="TextureRect" parent="." unique_id=1419616114]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,3 +144,13 @@ theme_override_fonts/font = ExtResource("3_wgsso")
 theme_override_font_sizes/font_size = 45
 text = "Beachfront"
 horizontal_alignment = 1
+
+[node name="Options" parent="." unique_id=412563756 instance=ExtResource("5_8ln24")]
+visible = false
+layout_mode = 1
+
+[node name="DavidKbdTropicalPack13BloomingFlowersAcoustic" type="AudioStreamPlayer" parent="." unique_id=868413967]
+stream = ExtResource("6_rtw2f")
+volume_db = -21.796
+autoplay = true
+bus = &"music"
