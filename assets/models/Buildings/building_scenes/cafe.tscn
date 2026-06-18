@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://mff76fra2ulj"]
+
+[ext_resource type="Script" uid="uid://dscrbb477dken" path="res://assets/models/Buildings/building_scenes/cafe.gd" id="1_icpno"]
+[ext_resource type="PackedScene" uid="uid://cfq6npsj5mqtn" path="res://assets/models/Buildings/Cafe.glb" id="2_1b4km"]
+
+[node name="Cafe" type="StaticBody3D" unique_id=1560155502]
+script = ExtResource("1_icpno")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="Cafe" parent="." unique_id=2003821470 instance=ExtResource("2_1b4km")]

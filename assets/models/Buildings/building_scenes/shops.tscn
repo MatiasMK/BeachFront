@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://daajna354d8go"]
+
+[ext_resource type="Script" uid="uid://ds4yk6s3xh1tp" path="res://assets/models/Buildings/building_scenes/shops.gd" id="1_e4y2c"]
+[ext_resource type="PackedScene" uid="uid://lgj2an5nqpil" path="res://assets/models/Buildings/Shops.glb" id="2_sbq6x"]
+
+[node name="Shops" type="StaticBody3D" unique_id=1664487794]
+script = ExtResource("1_e4y2c")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="Shops" parent="." unique_id=77011020 instance=ExtResource("2_sbq6x")]

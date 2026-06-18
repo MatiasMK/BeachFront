@@ -4,11 +4,14 @@ extends CanvasLayer
 
 ## List of possible buildings, links to their scenes.
 const BUILDINGS = {
-	"Hotel": preload("uid://cjbw6a27hy6tq"),
+	"Hotel": preload("uid://b061u217jqoof"),
 	"Tennis Court": preload("uid://bex6koivmd6gv"),
 	"Restaurant": preload("uid://dfyak3nqjseo0"),
-	"Spa": preload("uid://biawoa84ynn1c")
-}
+	"Spa": preload("uid://biawoa84ynn1c"),
+	"Cafe": preload("uid://mff76fra2ulj"),
+	"Club": preload("uid://3fkt4o73fj7v"),
+	"Shops": preload("uid://daajna354d8go")
+	}
 
 func _ready() -> void:
 	## Canvas layer settings

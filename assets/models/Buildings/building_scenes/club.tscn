@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://3fkt4o73fj7v"]
+
+[ext_resource type="Script" uid="uid://nfucfwaha5u0" path="res://assets/models/Buildings/building_scenes/club.gd" id="1_cv1v4"]
+[ext_resource type="PackedScene" uid="uid://cnrpe5mk4aij5" path="res://assets/models/Buildings/Club.glb" id="2_pgtbx"]
+
+[node name="Club" type="StaticBody3D" unique_id=741372934]
+script = ExtResource("1_cv1v4")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="Club" parent="." unique_id=495425742 instance=ExtResource("2_pgtbx")]

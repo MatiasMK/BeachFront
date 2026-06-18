@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b061u217jqoof"]
+
+[ext_resource type="Script" uid="uid://bligbxbtr6h6s" path="res://assets/models/Buildings/building_scenes/hotel.gd" id="1_x64cq"]
+[ext_resource type="PackedScene" uid="uid://nsa1hnw1xb5n" path="res://assets/models/Buildings/Hotel.glb" id="2_fj6yn"]
+
+[node name="Hotel" type="StaticBody3D" unique_id=161077252]
+script = ExtResource("1_x64cq")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="Hotel" parent="." unique_id=1056958176 instance=ExtResource("2_fj6yn")]
