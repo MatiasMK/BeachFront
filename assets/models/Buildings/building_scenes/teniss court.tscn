@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bex6koivmd6gv"]
+
+[ext_resource type="Script" uid="uid://tyipfwxf0chu" path="res://assets/models/Buildings/building_scenes/teniss_court.gd" id="1_60xu6"]
+[ext_resource type="PackedScene" uid="uid://b0h0k06qdv2uu" path="res://assets/models/Buildings/TennisCourt.glb" id="2_svlus"]
+
+[node name="TenissCourt" type="StaticBody3D" unique_id=1387662761]
+script = ExtResource("1_60xu6")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="TennisCourt" parent="." unique_id=1609882037 instance=ExtResource("2_svlus")]

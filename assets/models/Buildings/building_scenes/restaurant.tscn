@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dfyak3nqjseo0"]
+
+[ext_resource type="Script" uid="uid://bra3o8hm1dqim" path="res://assets/models/Buildings/building_scenes/restaurant.gd" id="1_rldfh"]
+[ext_resource type="PackedScene" uid="uid://dgin248cg77b8" path="res://assets/models/Buildings/Restaurant.glb" id="2_dljf5"]
+
+[node name="Restaurant" type="StaticBody3D" unique_id=273627342]
+script = ExtResource("1_rldfh")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="Restaurant" parent="." unique_id=1761508720 instance=ExtResource("2_dljf5")]

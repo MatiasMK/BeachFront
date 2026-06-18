@@ -5,8 +5,8 @@ extends CanvasLayer
 ## List of possible buildings, links to their scenes.
 const BUILDINGS = {
 	"Hotel": preload("uid://cjbw6a27hy6tq"),
-	"Tennis Court": preload("uid://dg4g8p8ypg8uh"),
-	"Restaurant": preload("uid://6oowpa64cir8"),
+	"Tennis Court": preload("uid://bex6koivmd6gv"),
+	"Restaurant": preload("uid://dfyak3nqjseo0"),
 	"Spa": preload("uid://biawoa84ynn1c")
 }
 

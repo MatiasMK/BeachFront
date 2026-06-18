@@ -2,11 +2,6 @@ extends Node3D
 
 @onready var grid: Node3D = $Grid
 
-const SMASHBOY = preload("uid://cjbw6a27hy6tq")
-const BLUERICKY = preload("uid://dg4g8p8ypg8uh")
-const SPA = preload("uid://biawoa84ynn1c")
-const TEEWEE = preload("uid://6oowpa64cir8")
-
 var object
 var _last_print: int = 0
 var _overlay_green: Material
@@ -33,33 +28,39 @@ func start_placement(scene: PackedScene) -> void:
 	object = newPlacement
 
 func _input(event: InputEvent) -> void:
-	#if Input.is_action_just_pressed("left_mouse_click") and not object:
-	#	var buildings = [SMASHBOY,BLUERICKY,TEEWEE,SPA]
-	#	var newPlacement = buildings.pick_random().instantiate()
-	#	add_child(newPlacement)
-	#	object = newPlacement
-	if Input.is_action_just_pressed("left_mouse_click") and object:
+	## If there isn't a building selected, skip the rest.
+	if not object: return
+	## On_click place building on grid.
+	if Input.is_action_just_pressed("left_mouse_click"):
+		## Get current mouse position.
 		var click_pos = _get_grid_position()
 		if click_pos:
+			## Set object to mouses position.
 			object.global_position = click_pos
+			## Based on mouse position, get cell candidates for placement.
 			var cells = _get_object_cells()
+			## Higlight candidate cells. And check if placement is posible.
 			if _check_and_highlight_cells(cells):
 				_place_placement(cells)
 
 func _process(delta: float) -> void:
+	## If there isn't a building selected, skip the rest.
 	if not object: return
-	
+	## Get current mouse position.
 	var mouseGridPosition = _get_grid_position()
 	if mouseGridPosition:
+		## Set object to follow the mouse.
 		object.global_position = mouseGridPosition
-		
-		_reset_highlight()
-		var cells = _get_object_cells()
-		var valid = _check_and_highlight_cells(cells)
-		_set_block_overlay(_overlay_green if valid else _overlay_red)
-	else:
-		_set_block_overlay(null)
 
+		_reset_highlight()
+		## Get cell candidates for placement.
+		var cells = _get_object_cells()
+		## Highlight candidate cells. And check if placement is posible.
+		var valid = _check_and_highlight_cells(cells)
+		## Set object overlay to red (unplaceable) or green (placeable).
+		_set_block_overlay(_overlay_green if valid else _overlay_red)
+
+## Get corresponding grid position to the current mouse position.
 func _get_grid_position():
 	var mousePositionDepth = 100
 	var mousePosition := get_viewport().get_mouse_position()
@@ -91,41 +92,33 @@ func _get_grid_position():
 		grid.global_position.z + row * grid.cellSize.y
 	)
 
+## Reset cell highlights.
 func _reset_highlight():
 	for child in grid.get_children():
 		child.change_color(grid.defaultColor)
 
+## Get the candidate cells for the placement of the current object.
 func _get_object_cells():
-	var cells := []
+	var cells := [] ## Var to return, list of candidate cells.
 	var grid_origin = grid.global_position
-	var anchor_col = round((object.global_position.x - grid_origin.x) / grid.cellSize.x)
-	var anchor_row = round((object.global_position.z - grid_origin.z) / grid.cellSize.y)
-	var child_map := {}
-	for child in grid.get_children():
-		var child_pos = Vector2i(
-			round((child.global_position.x - grid_origin.x) / grid.cellSize.x),
-			round((child.global_position.z - grid_origin.z) / grid.cellSize.y)
-		)
-		child_map[child_pos] = child
+	var anchor_col = round((object.global_position.x - grid_origin.x) / grid.cellSize.x) ## Anchor column of object.
+	var anchor_row = round((object.global_position.z - grid_origin.z) / grid.cellSize.y) ## Anchor row of object.
 
-	var statuses := []
 	for offset in object.get_cell_offsets():
 		var target = Vector2i(anchor_col + offset.x, anchor_row + offset.y)
-		if child_map.has(target):
-			var cell = child_map[target]
-			if cell.full:
-				statuses.append("(" + str(target.x) + "," + str(target.y) + ") OCUPADA")
-			else:
-				statuses.append("(" + str(target.x) + "," + str(target.y) + ") libre")
-			cells.append(cell)
-		else:
-			statuses.append("(" + str(target.x) + "," + str(target.y) + ") FUERA")
+		if grid.child_coords.has(target):
+			var cell = grid.child_coords[target]
+			if not cell.full:
+				##statuses.append("(" + str(target.x) + "," + str(target.y) + ") Empty") ## DEBUGG
+				cells.append(cell)
+			##else: statuses.append("(" + str(target.x) + "," + str(target.y) + ") Full") ## DEBUGG
+		##else: statuses.append("(" + str(target.x) + "," + str(target.y) + ") OOB") ## Out Of Bounds. DEBUGG
 
-	if _should_print():
-		print(object.name, " celdas: ", ", ".join(statuses))
+	##if _should_print():print(object.name, " celdas: ", ", ".join(statuses)) ## DEBUGG
 
 	return cells
 
+## Checks if the cells given are occupied. And changes their color acordingly.
 func _check_and_highlight_cells(objectCells: Array):
 	var expected = object.get_cell_offsets().size()
 
@@ -144,15 +137,19 @@ func _check_and_highlight_cells(objectCells: Array):
 
 	return isValid
 
+## Changes the objects overlay.
 func _set_block_overlay(material: Material):
 	for mesh in object.find_children("*", "MeshInstance3D", true):
 		mesh.material_override = material
 
+## Places the building.
 func _place_placement(objectCells):
+	## Get rid of the green overlay.
 	_set_block_overlay(null)
+	
 	object = null
-
+	## Set all cell candidates to full.
 	for cell in objectCells:
 		cell.full = true
-	
+	## Reset all highlights.
 	_reset_highlight()

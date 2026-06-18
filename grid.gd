@@ -20,6 +20,8 @@ extends Node3D
 
 const GROUND_LIBRARY_TEST = preload("uid://bo06wmdhhngmd")
 
+var child_coords := {}
+
 ## Deletes grid.
 func _remove_grid():
 	for node in get_children():
@@ -27,12 +29,16 @@ func _remove_grid():
 
 ## Creates grid.
 func _create_grid():
+	var child_pos
 	for height in range(gridHeight):
 		for width in range(gridWidth):
 			var gridCell = GROUND_LIBRARY_TEST.instantiate()
 			gridCell.cellSize = cellSize
 			
 			add_child(gridCell)
+			## Set coordinates of the new cell.
+			child_pos = Vector2i(round(width),round(height))
+			child_coords[child_pos] = gridCell
 			
 			var offset = Vector3(width * cellSize.x, 0, height * cellSize.y)
 			
