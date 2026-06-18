@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://f4vw5qm6g0kl" path="res://util/camera.gd" id="4_ihfcg"]
 [ext_resource type="Texture2D" uid="uid://baa40agqhes6m" path="res://assets/models/Landscape/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="5_bjebc"]
 [ext_resource type="PackedScene" uid="uid://bb0m0n305v8pa" path="res://assets/models/Landscape/lvl_1_landscape.glb" id="6_5hph3"]
-[ext_resource type="PackedScene" uid="uid://d3px345ygway3" path="res://assets/models/Landscape/tree_cluster_1.glb" id="6_j7kpp"]
-[ext_resource type="PackedScene" uid="uid://bysjq3yqaenq5" path="res://assets/models/Landscape/tree_1.glb" id="7_j7kpp"]
+[ext_resource type="PackedScene" uid="uid://cjf36hxba2xcg" path="res://assets/models/Landscape/tree_cluster_1.tscn" id="8_3sk1a"]
+[ext_resource type="PackedScene" uid="uid://b6bs5le6vdud2" path="res://assets/models/Landscape/tree_1.tscn" id="8_08mmt"]
 [ext_resource type="AudioStream" uid="uid://buogb8s2qbx55" path="res://assets/music/DavidKBD - Tropical Pack - 03 - Heartbeats - Bossanova.ogg" id="9_3sk1a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rka8t"]
@@ -57,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1)
 mesh_library = ExtResource("4_bjebc")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(2, 65532, 5, 65533, 1, 5, 65529, 2, 5, 9, 65533, 5, 1, 3, 6, 65533, 65532, 6, 8, 1, 6, 5, 3, 4, 65526, 65534, 4, 0, 2, 4, 65535, 65533, 4, 2, 2, 5, 65531, 3, 6, 7, 3, 7, 3, 65533, 7, 65535, 65534, 3, 65526, 65535, 3, 65533, 3, 5, 10, 65534, 3, 9, 2, 3, 65527, 3, 5, 5, 65532, 5)
+"cells": PackedInt32Array(2, 65532, 5, 65533, 1, 5, 65529, 2, 5, 9, 65533, 5, 1, 3, 6, 65533, 65532, 6, 8, 1, 6, 5, 3, 4, 65526, 65534, 4, 0, 2, 4, 65535, 65533, 4, 2, 2, 5, 65531, 3, 6, 7, 3, 7, 3, 65533, 7, 65535, 65534, 3, 65526, 65535, 3, 65533, 3, 5, 10, 65534, 3, 9, 2, 3, 65527, 3, 5, 5, 65532, 5, 65525, 0, 0, 1, 0, 0, 65525, 2, 655368, 8, 65534, 655368, 65530, 0, 10, 65533, 65535, 10, 65526, 1, 10, 65529, 65531, 10, 10, 0, 10)
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=807664480]
@@ -72,14 +72,14 @@ environment = SubResource("Environment_a0tk4")
 
 [node name="Decoration" type="Node" parent="." unique_id=606791637]
 
-[node name="tree_cluster_1" parent="Decoration" unique_id=1345123189 instance=ExtResource("6_j7kpp")]
-transform = Transform3D(0.65223074, 0, 0.7580205, 0, 1, 0, -0.7580205, 0, 0.65223074, 8.362907, 0.4213915, -9.027662)
+[node name="tree_cluster_3" parent="Decoration" unique_id=1891747518 instance=ExtResource("8_3sk1a")]
+transform = Transform3D(0.65209836, 0, 0.75813437, 0, 1, 0, -0.75813437, 0, 0.65209836, 8, 0.46750236, -9)
 
-[node name="tree_cluster_2" parent="Decoration" unique_id=1883712571 instance=ExtResource("6_j7kpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.672896, 0.5617056, -9.431346)
+[node name="tree_cluster_4" parent="Decoration" unique_id=1355298813 instance=ExtResource("8_3sk1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.562, -9)
 
-[node name="tree_1" parent="Decoration" unique_id=38029907 instance=ExtResource("7_j7kpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5935547, 0.45843446, -8.492672)
+[node name="tree_2" parent="Decoration" unique_id=38029907 instance=ExtResource("8_08mmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6211555, 0.42251575, -8.478462)
 
 [node name="DavidKbdTropicalPack03HeartbeatsBossanova" type="AudioStreamPlayer" parent="." unique_id=1752802024]
 stream = ExtResource("9_3sk1a")
