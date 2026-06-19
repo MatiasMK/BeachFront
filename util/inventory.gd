@@ -11,9 +11,9 @@ const BUILDINGS = {
 	"Club": 1, #preload("uid://3fkt4o73fj7v"),
 	"Shops": 2, #preload("uid://daajna354d8go"),
 	## Nightime.
-	#"Little Plant": preload("uid://f6qtwqtuk7xv"),
-	#"Bigger Plant": preload("uid://f5huurirpqch"),
-	#"Diago Plant": preload("uid://iigpcig122cl")
+	"Little Plant": 8,#preload("uid://f6qtwqtuk7xv"),
+	"Bigger Plant": 9,#preload("uid://f5huurirpqch"),
+	"Diago Plant": 10#preload("uid://iigpcig122cl")
 }
 ## Amount of each building at start of scene.
 ## Daytime.
@@ -32,6 +32,7 @@ const BUILDINGS = {
 var inventory: Dictionary = {}
 
 signal inventory_changed(building: String, quantity: int)
+signal inventory_empty
 
 func _ready() -> void:
 	_sync_inventory()
@@ -63,6 +64,8 @@ func substract_building(building: String, amount: int) -> void:
 	inventory[building]["quantity"] = max(0, inventory[building]["quantity"] - amount)
 	_sync_export(building)
 	inventory_changed.emit(building, inventory[building]["quantity"])
+	if _is_empty():
+		inventory_empty.emit()
 
 ## Syncs modified amounts of buildings for the editor view.
 func _sync_export(building: String) -> void:
@@ -72,3 +75,10 @@ func _sync_export(building: String) -> void:
 		if p.name == prop:
 			set(prop, inventory[building]["quantity"])
 			return
+			
+func _is_empty():
+	var empty = true
+	for buil_data in inventory.values():
+		if buil_data["quantity"] != 0:
+			empty = false
+	return empty

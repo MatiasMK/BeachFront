@@ -50,17 +50,29 @@ func run_dialogue(level,phase):
 	curr_level = level
 	curr_phase = phase
 	on_advance_dialogue()
-	visible = true
+	
 
 func on_advance_dialogue():
+	print("phase ", curr_phase)
 	if curr_phase == 1:
 		if ph1_dialogue != null and ph1_dialogue.size() > dialogue_index:
 			speaker_name_display.text = ph1_dialogue[dialogue_index]["speaker"]
 			text_display.text = ph1_dialogue[dialogue_index]["text"]
 			dialogue_index+=1
+			visible = true
 		else:
 			visible = false
 			dialogue_is_running = false
 			dialogue_index = 0
 			dialogue_end.emit()
-			
+	else:
+		if ph2_dialogue != null and ph2_dialogue.size() > dialogue_index:
+			speaker_name_display.text = ph2_dialogue[dialogue_index]["speaker"]
+			text_display.text = ph2_dialogue[dialogue_index]["text"]
+			dialogue_index+=1
+			visible = true
+		else:
+			visible = false
+			dialogue_is_running = false
+			dialogue_index = 0
+			dialogue_end.emit()

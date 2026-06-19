@@ -5,12 +5,15 @@ extends GridMap
 @export var gridWidth: int = 16
 @export var gridHeight: int = 9
 
+@onready var building_selector = $BuildingSelector
+
 const BUILDING_LEVEL = 0
 const OCCUPIED_ID = 7
 
 var selected_id = -1
 var _ghost: MeshInstance3D
 var _current_object_name: String = ""
+var accept_input = false
 
 signal building_placed(building_name: String)
 var _overlay_green: Material

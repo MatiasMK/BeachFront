@@ -8,6 +8,9 @@
 [ext_resource type="ArrayMesh" uid="uid://c3qblxecbnhmi" path="res://assets/models/Buildings/Hotel_Cube_012.res" id="6_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://b1bp8ydbe1m6n" path="res://assets/models/Buildings/Restaurant_Cube_013.res" id="7_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://bmi0te8qhxs4i" path="res://assets/models/Ground/tile_overlay_Plane.res" id="8_ri1er"]
+[ext_resource type="ArrayMesh" uid="uid://c8rsukrjunshu" path="res://assets/models/Plants/LittlePlant_Plane_025.res" id="9_67idf"]
+[ext_resource type="ArrayMesh" uid="uid://bykog8mqeua4y" path="res://assets/models/Plants/BiggerPlant_Cylinder_004.res" id="10_6sv74"]
+[ext_resource type="ArrayMesh" uid="uid://6b581xl22vfo" path="res://assets/models/Plants/DiagoPlant_Cylinder_020.res" id="11_du12g"]
 
 [node name="Node3D" type="Node3D" unique_id=1888715653]
 
@@ -34,3 +37,12 @@ mesh = ExtResource("7_sf31a")
 
 [node name="Occupied" type="MeshInstance3D" parent="." unique_id=113819009]
 mesh = ExtResource("8_ri1er")
+
+[node name="LittlePlant" type="MeshInstance3D" parent="." unique_id=1063894372]
+mesh = ExtResource("9_67idf")
+
+[node name="BiggerPlant" type="MeshInstance3D" parent="." unique_id=772414002]
+mesh = ExtResource("10_6sv74")
+
+[node name="DiagoPlant" type="MeshInstance3D" parent="." unique_id=2068703268]
+mesh = ExtResource("11_du12g")

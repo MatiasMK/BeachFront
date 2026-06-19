@@ -3,11 +3,14 @@ extends Node3D
 @export var hover_material: Material
 @onready var cam = $Camera3D
 @onready var ground_grid_map: GridMap = $GroundGridMap
+@onready var building_grid_map = $BuildingGridMap
 
 var current_cell: Vector3i = Vector3i.ZERO
 var previous_cell: Vector3i = Vector3i.ZERO
 var cell_has_hover: bool = false
 var accept_input : bool = false # cuando esta corriendo el dialogo o el menu de pausa, false
+
+signal end_of_phase
 
 func _physics_process(_delta):
 	# Cast a ray from the camera to the mouse position
@@ -62,12 +65,16 @@ func start_phase(phase : int):
 		tween.tween_property($WorldEnvironment.environment, "glow_bloom", 1,2) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)
-
+	building_grid_map.building_selector.inventory.inventory_empty.connect(_on_inventory_empty)
+	
 func set_accept_input(val):
 	accept_input = val
+	building_grid_map.accept_input = val
 
 func _input(event: InputEvent) -> void:
 	if accept_input:
 		if event.is_action_pressed("move_cam"):
 			cam.switch_spot()
 	
+func _on_inventory_empty():
+		end_of_phase.emit()

@@ -58,13 +58,13 @@ func _on_level_loaded():
 	curr_level = ResourceLoader.load_threaded_get(levels[curr_level_ind]).instantiate()
 	level_container.add_child(curr_level)
 	curr_level.start_phase(1)
+	curr_level.end_of_phase.connect(_on_phase_end)
 	loading_screen_node.queue_free()
 				
 
 func _on_dialogue_end():
 	var lvl = level_container.get_child(0)
 	lvl.set_accept_input(true)
-	lvl.start_phase(2)
 
 func _on_pause():
 	is_paused = true
@@ -90,6 +90,8 @@ func _on_quit():
 func _on_phase_end():
 	if phase == 1:
 		phase = 2
+		curr_level.set_accept_input(false)
+		curr_level.start_phase(2)
 		dialogue.run_dialogue(curr_level_ind,phase)
 	else:
 		pass # fin del juego
