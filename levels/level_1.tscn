@@ -184,6 +184,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49121, 0.0037988573, -3.401
 [node name="tree_cluster_16" parent="Decoration" unique_id=1609212859 instance=ExtResource("13_vjtdm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.286731, 0.0037979037, -3.4378974)
 
+[node name="tree_cluster_17" parent="Decoration" unique_id=1596663227 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5290003, 0, -4.464784)
+
+[node name="tree_cluster_18" parent="Decoration" unique_id=1039729454 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7072954, 0, -4.8513083)
+
+[node name="tree_cluster_19" parent="Decoration" unique_id=714281205 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(-0.9817336, 0, -0.19026063, 0, 1, 0, 0.19026063, 0, -0.9817336, -5.908133, 0, -4.5339622)
+
+[node name="Stone8" parent="Decoration" unique_id=1600331439 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8235116, -0.17042494, -5.033036)
+
+[node name="Stone9" parent="Decoration" unique_id=1064641813 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1368928, 0, -5.688308)
+
+[node name="Stone10" parent="Decoration" unique_id=1985356190 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.39588, -0.5384178, -2.2778358)
+
+[node name="Stone11" parent="Decoration" unique_id=1666296380 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.446256, -0.13509941, 3.0596366)
+
+[node name="Stone12" parent="Decoration" unique_id=580677538 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.796933, -0.3845873, -0.4284773)
+
+[node name="Stone13" parent="Decoration" unique_id=1392179968 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.805576, -0.1446724, 4.264609)
+
+[node name="Stone14" parent="Decoration" unique_id=402579054 instance=ExtResource("12_betor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.820835, -0.24603081, -4.839087)
+
+[node name="tree_cluster_20" parent="Decoration" unique_id=2039673235 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.558195, 0, -4.4461045)
+
+[node name="tree_cluster_21" parent="Decoration" unique_id=783286525 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(0.7587827, 0, 0.6513439, 0, 1, 0, -0.6513439, 0, 0.7587827, 6.7350197, 0, -4.2736163)
+
+[node name="tree_cluster_22" parent="Decoration" unique_id=904085464 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(0.46945614, 0, -0.8829558, 0, 1, 0, 0.8829558, 0, 0.46945614, 5.9536543, 0, -4.8171754)
+
+[node name="tree_cluster_23" parent="Decoration" unique_id=34232559 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(0.39506456, 0, 0.91865337, 0, 1, 0, -0.91865337, 0, 0.39506456, -11.115253, 0, -3.6337514)
+
+[node name="tree_cluster_24" parent="Decoration" unique_id=393134056 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.427721, 0, -2.8471694)
+
+[node name="tree_cluster_25" parent="Decoration" unique_id=1231450913 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(0.87697846, 0, -0.48052964, 0, 1, 0, 0.48052964, 0, 0.87697846, -12.255773, 0, -3.760717)
+
+[node name="tree_cluster_26" parent="Decoration" unique_id=1277536796 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(0.45577797, 0, 0.8900935, 0, 1, 0, -0.8900935, 0, 0.45577797, 7.025274, 0, -5.047251)
+
+[node name="tree_cluster_27" parent="Decoration" unique_id=1980402708 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.455514, 0, -5.318895)
+
+[node name="tree_cluster_28" parent="Decoration" unique_id=940367604 instance=ExtResource("13_vjtdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.934638, 0.5772524, -5.1725354)
+
 [node name="testGM" type="GridMap" parent="." unique_id=1344896416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -4)
 visible = false
