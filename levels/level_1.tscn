@@ -85,6 +85,8 @@ obstacles = NodePath("../ObstacleGrid")
 inv_hotel = 5
 inv_shops = 3
 inv_spa = 1
+inv_bigger_plant = 1
+inv_diago_plant = 1
 
 [node name="GroundGridMap" type="GridMap" parent="LevelGrid" unique_id=1666464073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
