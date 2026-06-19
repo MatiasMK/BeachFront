@@ -1,0 +1,18 @@
+[gd_resource type="MeshLibrary" format=3 uid="uid://dn0xsya8fpwb7"]
+
+[resource]
+data = {
+"items": {
+0: {
+"mesh": SubResource("Mesh_0"),
+"shape": SubResource("Shape_0"),
+"navmesh": null
+}
+}
+}
+
+[sub_resource type="BoxMesh" id="Mesh_0"]
+size = Vector3(0.95, 0.05, 0.95)
+
+[sub_resource type="BoxShape3D" id="Shape_0"]
+size = Vector3(1, 0.1, 1)

@@ -44,7 +44,7 @@ func _update_button(building: String, qty: int) -> void:
 
 func _on_building_selected(building: String, id : int)-> void:#scene: PackedScene) -> void:
 	placementGrid.cancel_placement()
-	placementGrid.selected_id = id
+	placementGrid.start_placement(building, id)
 
 func _on_building_placed(building: String) -> void:
 	inventory.substract_building(building, 1)

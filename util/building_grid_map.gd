@@ -3,10 +3,12 @@ extends GridMap
 ## Gridmap of all blocked cells.
 @export var obstacles: GridMap
 
+
 const BUILDING_LEVEL = 0
 const OCCUPIED_ID = 7
 
 var selected_id = -1
+var _ghost: MeshInstance3D
 var _current_object_name: String = ""
 var _last_print: int = 0
 
@@ -27,7 +29,18 @@ func _ready() -> void:
 
 ## Cancel the current placement and clean up.
 func cancel_placement() -> void:
+	if _ghost:
+		_ghost.queue_free()
+		_ghost = null
 	selected_id = -1
+	
+func start_placement(building_name, item_id):
+	var mesh = mesh_library.get_item_mesh(item_id)
+	_ghost = MeshInstance3D.new()
+	_ghost.mesh = mesh
+	add_child(_ghost)
+	selected_id = item_id
+	_current_object_name = building_name
 
 func _input(event: InputEvent) -> void:
 	## If there isn't a building selected, skip the rest.
@@ -47,6 +60,8 @@ func _input(event: InputEvent) -> void:
 				print(Vector3i(click_pos.x+cell.x,BUILDING_LEVEL,click_pos.z+cell.y))
 				set_cell_item(Vector3i(click_pos.x+cell.x,BUILDING_LEVEL,click_pos.z+cell.y),OCCUPIED_ID,rotation_index)
 			set_cell_item(Vector3i(click_pos.x,BUILDING_LEVEL,click_pos.z),selected_id,rotation_index)
+			## Resets selected_id.
+			cancel_placement()
 	
 	if Input.is_action_just_pressed("rotate_left"):
 		if rotation_index == 0:
@@ -67,31 +82,43 @@ func _input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	## If there isn't a building selected, skip the rest.
-	#if not object: return
+	if selected_id == -1: return
 	## Get current mouse position.
-	var mouseGridPosition = _get_click_position()
+	var cell = _get_click_position()
+	if _ghost and cell != null:
+		_ghost.global_position = to_global(map_to_local(cell))
+		var valid = _pos_is_valid(cell)
+		_ghost.material_override = _overlay_green if valid else _overlay_red
+	
 
 
 ## Get corresponding grid position to the current mouse position.
 func _get_click_position():
 	var current_cell = null
 	# Cast a ray from the camera to the mouse position
+	var cam = get_viewport().get_camera_3d()
+	print("cam: ", cam)  # ¿null?
+	if not cam: return null
 	var space_state = get_world_3d().direct_space_state
 	var mouse_pos = get_viewport().get_mouse_position()
 	
-	var cam = get_viewport().get_camera_3d()
-	var origin = cam.position#project_ray_origin(mouse_pos)
+	var origin = cam.project_ray_origin(mouse_pos)#project_ray_origin(mouse_pos)
 	var end = origin + cam.project_ray_normal(mouse_pos) * 1000
 	
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	var result = space_state.intersect_ray(query)
-
-	if result:
-		if result.collider.get_parent() is GridMap:
-			# Convert global collision point to local GridMap space
-			var local_pos = to_local(result.position)
-			# Convert local space to specific GridMap Cell coordinates
-			current_cell = local_to_map(local_pos)
+	query.collision_mask = 2
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+	var result = get_world_3d().direct_space_state.intersect_ray(query)
+	print("result: ", result)  # ¿tiene algo?
+	if result.is_empty():
+		return null
+	# Convert global collision point to local GridMap space
+	var local_pos = to_local(result.position)
+	print("local_pos: ", local_pos)
+	# Convert local space to specific GridMap Cell coordinates
+	current_cell = local_to_map(local_pos)
+	print("cell: ", current_cell)
 	return current_cell
 
 func _pos_is_valid(pos : Vector3i):
