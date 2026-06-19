@@ -32,6 +32,7 @@ func _ready() -> void:
 	_overlay_red.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	
 	check_obstacles()
+	_show_grid()
 
 ## Cancel the current placement and clean up.
 func cancel_placement() -> void:
@@ -191,10 +192,39 @@ func get_building_cells(id : int):
 		for cell in cells:
 			result.append(Vector2i(cell.y,-cell.x))
 	return result
-	
+
 func check_obstacles():
 	for width in gridWidth:
 		for height in gridHeight:
 			var cell = obstacles.get_cell_item(Vector3i(width,BUILDING_LEVEL,height))
 			if cell == 0:
 				set_cell_item(Vector3(width,BUILDING_LEVEL,height), 7, rotation_index)
+	
+func _show_grid():
+	var st = SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_LINES)
+
+	var y_offset = 0.005
+
+	for z in range(gridHeight + 1):
+		var a = map_to_local(Vector3i(0, BUILDING_LEVEL, z)) + Vector3(-0.5, y_offset, -0.5)
+		var b = map_to_local(Vector3i(gridWidth, BUILDING_LEVEL, z)) + Vector3(-0.5, y_offset, -0.5)
+		st.add_vertex(a)
+		st.add_vertex(b)
+
+	for x in range(gridWidth + 1):
+		var a = map_to_local(Vector3i(x, BUILDING_LEVEL, 0)) + Vector3(-0.5, y_offset, -0.5)
+		var b = map_to_local(Vector3i(x, BUILDING_LEVEL, gridHeight)) + Vector3(-0.5, y_offset, -0.5)
+		st.add_vertex(a)
+		st.add_vertex(b)
+
+	var mesh = st.commit()
+	var mi = MeshInstance3D.new()
+	mi.mesh = mesh
+
+	var mat = StandardMaterial3D.new()
+	mat.albedo_color = Color(0.5, 0.5, 0.5, 0.7)
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mi.material_override = mat
+
+	add_child(mi)
