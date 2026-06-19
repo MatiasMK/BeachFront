@@ -11,7 +11,9 @@ const BUILDINGS = {
 	"Club": preload("uid://3fkt4o73fj7v"),
 	"Shops": preload("uid://daajna354d8go"),
 	## Nightime.
-	"Little Plant": preload("uid://f6qtwqtuk7xv")
+	"Little Plant": preload("uid://f6qtwqtuk7xv"),
+	"Bigger Plant": preload("uid://f5huurirpqch"),
+	"Diago Plant": preload("uid://iigpcig122cl")
 }
 ## Amount of each building at start of scene.
 ## Daytime.
@@ -24,6 +26,8 @@ const BUILDINGS = {
 @export var inv_spa: int = 0
 ## Nightime.
 @export var inv_little_plant: int = 0
+@export var inv_bigger_plant: int = 0
+@export var inv_diago_plant: int = 0
 ## Stores each buildings scene, asociating it with its amount in inventory.
 var inventory: Dictionary = {}
 

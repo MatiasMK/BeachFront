@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://f5huurirpqch"]
+
+[ext_resource type="Script" uid="uid://ko8n4kyoxebf" path="res://assets/models/Plants/plants_scenes/bigger_plant.gd" id="1_fnpt7"]
+[ext_resource type="PackedScene" uid="uid://y7y2ytb416mp" path="res://assets/models/Plants/BiggerPlant.glb" id="1_ranem"]
+
+[node name="BiggerPlant" type="StaticBody3D" unique_id=531648137]
+script = ExtResource("1_fnpt7")
+
+[node name="BiggerPlant" parent="." unique_id=351784314 instance=ExtResource("1_ranem")]

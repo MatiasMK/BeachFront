@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://iigpcig122cl"]
+
+[ext_resource type="PackedScene" uid="uid://b0rewr615e4ds" path="res://assets/models/Plants/DiagoPlant.glb" id="1_7x0dc"]
+[ext_resource type="Script" uid="uid://7jl4nmhhreil" path="res://assets/models/Plants/plants_scenes/diago_plant.gd" id="1_c2i0f"]
+
+[node name="DiagoPlant" type="StaticBody3D" unique_id=1755289374]
+script = ExtResource("1_c2i0f")
+
+[node name="DiagoPlant" parent="." unique_id=263181245 instance=ExtResource("1_7x0dc")]

@@ -81,11 +81,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6211555, 0.42251575, -8.47
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.026, 0, -3.091)
 obstacles = NodePath("../ObstacleGrid")
 
-[node name="Inventory" parent="LevelGrid/PlacementGrid" index="1" unique_id=455354922]
-inv_hotel = 3
-inv_tennis_court = 2
-inv_little_plant = 1
-
 [node name="GroundGridMap" type="GridMap" parent="LevelGrid" unique_id=1666464073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
 mesh_library = ExtResource("1_hn12h")
