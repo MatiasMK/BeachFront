@@ -30,6 +30,8 @@ func _ready() -> void:
 	_overlay_red = StandardMaterial3D.new()
 	_overlay_red.albedo_color = Color(1, 0, 0, 0.3)
 	_overlay_red.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	
+	check_obstacles()
 
 ## Cancel the current placement and clean up.
 func cancel_placement() -> void:
@@ -51,9 +53,9 @@ func rotate_ghost(deg:float):
 	var degree = _ghost.rotation.y
 	print(rotation)
 	if degree == 0 and deg < 0:
-		_ghost.basis = Basis(Vector3(0,1,0), 1.5*PI) * _ghost.basis
+		_ghost.basis = Basis(Vector3(0,1,0), 1.5*PI)
 	elif degree == 1.5*PI and deg > 0:
-		_ghost.basis = Basis(Vector3(0,0,0), 0)
+		_ghost.basis = Basis(Vector3(0,1,0), 0)
 	else:
 		_ghost.basis = Basis(Vector3(0,1,0), deg) * _ghost.basis
 
@@ -187,3 +189,9 @@ func get_building_cells(id : int):
 			result.append(Vector2i(cell.y,-cell.x))
 	return result
 	
+func check_obstacles():
+	for width in gridWidth:
+		for height in gridHeight:
+			var cell = obstacles.get_cell_item(Vector3i(width,BUILDING_LEVEL,height))
+			if cell == 0:
+				set_cell_item(Vector3(width,BUILDING_LEVEL,height), 7, rotation_index)
