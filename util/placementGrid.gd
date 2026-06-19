@@ -5,7 +5,10 @@ extends Node3D
 @onready var grid: Node3D = $Grid
 
 var object
+var _current_object_name: String = ""
 var _last_print: int = 0
+
+signal building_placed(building_name: String)
 var _overlay_green: Material
 var _overlay_red: Material
 
@@ -24,7 +27,9 @@ func _should_print() -> bool:
 		return true
 	return false
 
-func start_placement(scene: PackedScene) -> void:
+## Starts the placement process.
+func start_placement(building: String, scene: PackedScene) -> void:
+	_current_object_name = building
 	var newPlacement = scene.instantiate()
 	add_child(newPlacement)
 	object = newPlacement
@@ -139,3 +144,5 @@ func _place_placement(objectCells):
 	## Set all cell candidates to full.
 	for cell in objectCells:
 		cell.full = true
+	## Signal that the building has been placed.
+	building_placed.emit(_current_object_name)

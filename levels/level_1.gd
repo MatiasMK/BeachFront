@@ -28,7 +28,6 @@ func _physics_process(_delta):
 			current_cell = ground_grid_map.local_to_map(local_pos)
 			if current_cell != previous_cell or not cell_has_hover:
 				reset_previous_tile()
-				highlight_tile(current_cell)
 				previous_cell = current_cell
 				cell_has_hover = true
 		else:

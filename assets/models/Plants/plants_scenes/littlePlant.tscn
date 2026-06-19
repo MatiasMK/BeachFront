@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://f6qtwqtuk7xv"]
+
+[ext_resource type="Script" uid="uid://bshr3vdf53phl" path="res://assets/models/Plants/plants_scenes/little_plant.gd" id="1_ufawq"]
+[ext_resource type="PackedScene" uid="uid://bk02qeldhp3g7" path="res://assets/models/Plants/LittlePlant.glb" id="2_qny1q"]
+
+[node name="LittlePlant" type="StaticBody3D" unique_id=1419312778]
+script = ExtResource("1_ufawq")
+offset = Vector3(0.5, 0, 0.5)
+
+[node name="LittlePlant" parent="." unique_id=92962013 instance=ExtResource("2_qny1q")]

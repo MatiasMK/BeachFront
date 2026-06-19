@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cscie1u8bo5vn" path="res://util/placementGrid.gd" id="1_sl42r"]
 [ext_resource type="PackedScene" uid="uid://du78slh8fwf10" path="res://Grid.tscn" id="2_05hrg"]
 [ext_resource type="Script" uid="uid://bewg3hf7m7wek" path="res://Scripts/building_selector.gd" id="3_yxxl0"]
+[ext_resource type="Script" uid="uid://bw4emvvfsjc0t" path="res://util/inventory.gd" id="4_ewtw7"]
 
 [node name="PlacementGrid" type="Node3D" unique_id=1449289315]
 script = ExtResource("1_sl42r")
@@ -11,6 +12,9 @@ script = ExtResource("1_sl42r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 gridWidth = 16
 gridHeight = 9
+
+[node name="Inventory" type="Node3D" parent="." unique_id=455354922]
+script = ExtResource("4_ewtw7")
 
 [node name="BuildingSelector" type="CanvasLayer" parent="." unique_id=1625335317]
 script = ExtResource("3_yxxl0")
