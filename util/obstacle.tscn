@@ -1,13 +1,6 @@
 [gd_scene format=3 uid="uid://cm1xjuoj5oejg"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ts163"]
-resource_local_to_scene = true
-size = Vector2(1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knsc0"]
-transparency = 1
-albedo_color = Color(1, 0, 0, 0.31764707)
+[ext_resource type="ArrayMesh" uid="uid://da2qukagbawc3" path="res://assets/models/Ground/Stone_rock_032.res" id="1_6577p"]
 
 [node name="Obstacle" type="MeshInstance3D" unique_id=15854345]
-mesh = SubResource("PlaneMesh_ts163")
-surface_material_override/0 = SubResource("StandardMaterial3D_knsc0")
+mesh = ExtResource("1_6577p")

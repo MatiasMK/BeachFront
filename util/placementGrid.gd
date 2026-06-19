@@ -12,6 +12,10 @@ signal building_placed(building_name: String)
 var _overlay_green: Material
 var _overlay_red: Material
 
+
+# 0 = up | 1 = right | 2 = down | 3 = left
+var rotation_index = 0
+
 func _ready() -> void:
 	_overlay_green = StandardMaterial3D.new()
 	_overlay_green.albedo_color = Color(0, 1, 0, 0.3)
@@ -60,7 +64,33 @@ func _input(event: InputEvent) -> void:
 			## Higlight candidate cells. And check if placement is posible.
 			if _check_cells(cells):
 				_place_placement(cells)
-
+	if Input.is_action_just_pressed("rotate_left"):
+		if rotation_index == 0:
+			rotation_index = 3
+		else:
+			rotation_index -= 1
+		if object.rotation.y == 2*PI:
+			object.get_child(0).rotation = Vector3(0,PI/2,0)
+		else:
+			object.get_child(0).rotation = Vector3(0,object.get_child(0).rotation.y + PI/2,0)
+		var gridpos = _get_grid_position()
+		if gridpos:
+			object.position = gridpos
+	if Input.is_action_just_pressed("rotate_right"):
+		if rotation_index == 3:
+			rotation_index = 0
+		else:
+			rotation_index += 1
+		if object.rotation.y == -2*PI:
+			object.get_child(0).rotation = Vector3(0,-PI/2,0)
+		else:
+			object.get_child(0).rotation = Vector3(0,object.get_child(0).rotation.y -PI/2,0)
+		var gridpos = _get_grid_position()
+		if gridpos:
+			object.position = gridpos
+		
+		
+	
 func _process(delta: float) -> void:
 	## If there isn't a building selected, skip the rest.
 	if not object: return
@@ -114,25 +144,26 @@ func _get_object_cells():
 	var cells := [] ## Var to return, list of candidate cells.
 	var grid_origin = grid.global_position
 	var anchor_col = round((object.global_position.x - grid_origin.x) / grid.cellSize.x) ## Anchor column of object.
-	var anchor_row = round((object.global_position.z - grid_origin.z) / grid.cellSize.y) ## Anchor row of object.
-
-	for offset in object.get_cell_offsets():
+	var anchor_row = round((object.global_position.z - grid_origin.z) / grid.cellSize.y) -1 ## Anchor row of object.
+	var statuses = []
+	#print(anchor_col, " ", anchor_row)
+	for offset in object.get_cell_offsets(rotation_index):
 		var target = Vector2i(anchor_col + offset.x, anchor_row + offset.y)
 		if grid.child_coords.has(target):
 			var cell = grid.child_coords[target]
 			if not cell.full:
-				##statuses.append("(" + str(target.x) + "," + str(target.y) + ") Empty") ## DEBUGG
+				statuses.append("(" + str(target.x) + "," + str(target.y) + ") Empty") ## DEBUGG
 				cells.append(cell)
-			##else: statuses.append("(" + str(target.x) + "," + str(target.y) + ") Full") ## DEBUGG
-		##else: statuses.append("(" + str(target.x) + "," + str(target.y) + ") OOB") ## Out Of Bounds. DEBUGG
+			else: statuses.append("(" + str(target.x) + "," + str(target.y) + ") Full") ## DEBUGG
+		else: statuses.append("(" + str(target.x) + "," + str(target.y) + ") OOB") ## Out Of Bounds. DEBUGG
 
-	##if _should_print():print(object.name, " celdas: ", ", ".join(statuses)) ## DEBUGG
+	if _should_print():print(object.name, " celdas: ", ", ".join(statuses)) ## DEBUGG
 
 	return cells
 
 ## Checks if the cells given are occupied. And changes their color acordingly.
 func _check_cells(objectCells: Array):
-	var expected = object.get_cell_offsets().size()
+	var expected = object.get_cell_offsets(rotation_index).size()
 
 	if objectCells.size() != expected:
 		return false

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cphfmgnpt0m3w"]
 
-[ext_resource type="ArrayMesh" uid="uid://boys3ukqxb305" path="res://assets/models/Buildings/Cafe_Cube_005.res" id="1_sf31a"]
+[ext_resource type="ArrayMesh" uid="uid://d1qsof5rwxm50" path="res://assets/models/Buildings/Cafe_Cube_005.res" id="1_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://c68uqh1v2wqg3" path="res://assets/models/Buildings/Club_Cube_007.res" id="2_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://bb0smvv512sqf" path="res://assets/models/Buildings/Shops_Cube_009.res" id="3_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://ddun150ya33g0" path="res://assets/models/Buildings/TennisCourt_Cube_004.res" id="4_sf31a"]

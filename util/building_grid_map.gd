@@ -2,8 +2,8 @@ extends GridMap
 
 ## Gridmap of all blocked cells.
 @export var obstacles: GridMap
-@export var gridWidth: int = 15
-@export var gridHeight: int = 8
+@export var gridWidth: int = 16
+@export var gridHeight: int = 9
 
 const BUILDING_LEVEL = 0
 const OCCUPIED_ID = 7
@@ -18,6 +18,7 @@ var _overlay_red: Material
 
 # 0 = up | 1 = right | 2 = down | 3 = left
 var rotation_index = 0
+var rotation_dir = 0
 
 func _ready() -> void:
 	_overlay_green = StandardMaterial3D.new()
@@ -54,7 +55,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_mouse_click"):
 		## Get current mouse position.
 		var click_pos = _get_click_position()
-		print(click_pos)
+		#print(click_pos)
 		if click_pos and _pos_is_valid(click_pos):
 			var cells = get_building_cells(selected_id)
 			for cell in cells:
@@ -66,23 +67,25 @@ func _input(_event: InputEvent) -> void:
 			cancel_placement()
 	
 	if Input.is_action_just_pressed("rotate_left"):
+		rotation_dir = -1
 		if rotation_index == 0:
-			rotation_index = 10
-		elif rotation_index == 10:
-			rotation_index = 16
+			rotation_index = 16 # left
 		elif rotation_index == 16:
-			rotation_index = 22
+			rotation_index = 10 # down
+		elif rotation_index == 10:
+			rotation_index = 22 # right
 		else:
 			rotation_index =0
 	if Input.is_action_just_pressed("rotate_right"):
+		rotation_dir = 1
 		if rotation_index == 0:
-			rotation_index = 22
+			rotation_index = 22 #right
 		elif rotation_index == 22:
-			rotation_index = 16
-		elif rotation_index == 16:
-			rotation_index = 10
+			rotation_index = 10 #down
+		elif rotation_index == 10:
+			rotation_index = 16 # left
 		else:
-			rotation_index =0
+			rotation_index = 0
 		
 		
 	
@@ -125,13 +128,16 @@ func _get_click_position():
 
 func _pos_is_valid(pos : Vector3i):
 	if pos:
+		#pos.y -= 1
 		var cells = get_building_cells(selected_id)
+		
 		for cell in cells:
 			cell.x += pos.x
-			cell.y += pos.z
+			cell.y += pos.z #+ 1
+			print("valido celdas ", cell)
 			if cell.x < 0 or cell.y < 0:
 				return false
-			elif cell.x > gridWidth or cell.y > gridHeight:
+			elif cell.x >= gridWidth or cell.y >= gridHeight:
 				return false
 			if get_cell_item(Vector3i(cell.x,BUILDING_LEVEL,cell.y)) != INVALID_CELL_ITEM:
 				return false
@@ -142,24 +148,26 @@ func _pos_is_valid(pos : Vector3i):
 func get_building_cells(id : int):
 	var cells
 	match id:
-		0: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(-1,1), Vector2i(-1,0)]
-		1: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(-1,0), Vector2i(0,0)]
-		2: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(2,0), Vector2i(-1,0)]
-		3: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(-1,1), Vector2i(1,0)]
-		4: cells= [Vector2i(0,1), Vector2i(-1,1), Vector2i(1,0), Vector2i(0,0)]
-		5: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)]
-		6: cells= [Vector2i(0,1), Vector2i(-1,1), Vector2i(1,1), Vector2i(0,0)]
+		0: cells= [Vector2i(0,0), Vector2i(1,1), Vector2i(1,0), Vector2i(-1,0)]
+		1: cells= [Vector2i(0,0), Vector2i(0,-1), Vector2i(-1,-1), Vector2i(1,0)]
+		2: cells= [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Vector2i(2,0)]
+		3: cells= [Vector2i(0,0), Vector2i(0,-1), Vector2i(0,1), Vector2i(1,1)]
+		4: cells= [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,-1), Vector2i(1,-1)]
+		5: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(0,-1), Vector2i(1,-1)]#hotel
+		6: cells= [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,-1), Vector2i(1,0)]
+		
+		
 		
 	if rotation_index == 0:
 		return cells
 	var result : Array[Vector2i] = []
-	if rotation_index == 10:
+	if rotation_index == 22:
 		for cell in cells:
 			result.append(Vector2i(-cell.y,cell.x))
-	if rotation_index == 16:
+	elif rotation_index == 10:
 		for cell in cells:
 			result.append(Vector2i(-cell.x,-cell.y))
-	if rotation_index == 22:
+	elif rotation_index == 16:
 		for cell in cells:
 			result.append(Vector2i(cell.y,-cell.x))
 	return result

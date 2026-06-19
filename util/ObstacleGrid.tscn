@@ -2,10 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cm1xjuoj5oejg" path="res://util/obstacle.tscn" id="1_knsc0"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_bh3ln"]
-resource_local_to_scene = true
-size = Vector2(1, 1)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_ts163"]
 resource_local_to_scene = true
 size = Vector2(1, 1)
@@ -17,7 +13,6 @@ albedo_color = Color(0, 1, 0, 0.31764707)
 [node name="ObstacleGrid" type="Node3D" unique_id=58048884]
 
 [node name="Obstacle" parent="." unique_id=15854345 instance=ExtResource("1_knsc0")]
-mesh = SubResource("PlaneMesh_bh3ln")
 
 [node name="FreeSpace" type="MeshInstance3D" parent="." unique_id=1650045166]
 mesh = SubResource("PlaneMesh_ts163")
