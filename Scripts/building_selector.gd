@@ -43,8 +43,7 @@ func _update_button(building: String, qty: int) -> void:
 	_buttons[building].text = building + " (" + str(qty) + ")"
 
 func _on_building_selected(building: String, scene: PackedScene) -> void:
-	if placementGrid.object != null:
-		return
+	placementGrid.cancel_placement()
 	placementGrid.start_placement(building, scene)
 
 func _on_building_placed(building: String) -> void:

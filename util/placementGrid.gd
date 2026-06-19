@@ -27,6 +27,13 @@ func _should_print() -> bool:
 		return true
 	return false
 
+## Cancel the current placement and clean up.
+func cancel_placement() -> void:
+	if not object: return
+	object.queue_free()
+	_current_object_name = ""
+	object = null
+
 ## Starts the placement process.
 func start_placement(building: String, scene: PackedScene) -> void:
 	_current_object_name = building
@@ -39,9 +46,7 @@ func _input(event: InputEvent) -> void:
 	if not object: return
 	## Cancel placement on Escape.
 	if Input.is_action_just_pressed("ui_cancel"):
-		object.queue_free()
-		_current_object_name = ""
-		object = null
+		cancel_placement()
 		return
 	## On_click place building on grid.
 	if Input.is_action_just_pressed("left_mouse_click"):
