@@ -47,6 +47,16 @@ func start_placement(building_name, item_id):
 	selected_id = item_id
 	_current_object_name = building_name
 
+func rotate_ghost(deg:float):
+	var degree = _ghost.rotation.y
+	print(rotation)
+	if degree == 0 and deg < 0:
+		_ghost.basis = Basis(Vector3(0,1,0), 1.5*PI) * _ghost.basis
+	elif degree == 1.5*PI and deg > 0:
+		_ghost.basis = Basis(Vector3(0,0,0), 0)
+	else:
+		_ghost.basis = Basis(Vector3(0,1,0), deg) * _ghost.basis
+
 func _input(_event: InputEvent) -> void:
 	## If there isn't a building selected, skip the rest.
 	if selected_id == -1: return
@@ -71,6 +81,7 @@ func _input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("rotate_left"):
 		rotation_dir = -1
+		rotate_ghost(PI/2)
 		if rotation_index == 0:
 			rotation_index = 16 # left
 		elif rotation_index == 16:
@@ -81,6 +92,7 @@ func _input(_event: InputEvent) -> void:
 			rotation_index =0
 	if Input.is_action_just_pressed("rotate_right"):
 		rotation_dir = 1
+		rotate_ghost(-PI/2)
 		if rotation_index == 0:
 			rotation_index = 22 #right
 		elif rotation_index == 22:
