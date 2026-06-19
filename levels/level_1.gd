@@ -65,6 +65,9 @@ func start_phase(phase : int):
 		tween.tween_property($WorldEnvironment.environment, "glow_bloom", 1,2) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)
+		tween.tween_property($DirectionalLight3D, "shadow_opacity", 0,2) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
 	building_grid_map.building_selector.inventory.inventory_empty.connect(_on_inventory_empty)
 	
 func set_accept_input(val):

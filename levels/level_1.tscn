@@ -26,6 +26,7 @@ glow_hdr_threshold = 2.62
 size = Vector3(16, 1, 9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ot28"]
+size = Vector3(16, 1, 9)
 
 [node name="Level1" type="Node3D" unique_id=545757318]
 script = ExtResource("1_rka8t")
@@ -83,13 +84,16 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingGridMap/StaticBody3D" unique_id=840298864]
-transform = Transform3D(16.046, 0, 0, 0, 1, 0, 0, 0, 9, 8, 0, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4.5)
 shape = SubResource("BoxShape3D_5ot28")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=807664480]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1891738999]
 transform = Transform3D(1, 0, 0, 0, 0.04745516, 0.99887335, 0, -0.99887335, 0.04745516, 0, 15.3139515, -7.2449875)
+light_energy = 0.4
+shadow_enabled = true
+shadow_blur = 0.0
 
 [node name="Landscape" parent="." unique_id=257909601 instance=ExtResource("6_5hph3")]
 
