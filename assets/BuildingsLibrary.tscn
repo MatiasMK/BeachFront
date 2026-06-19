@@ -2,11 +2,12 @@
 
 [ext_resource type="ArrayMesh" uid="uid://boys3ukqxb305" path="res://assets/models/Buildings/Cafe_Cube_005.res" id="1_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://c68uqh1v2wqg3" path="res://assets/models/Buildings/Club_Cube_007.res" id="2_sf31a"]
-[ext_resource type="ArrayMesh" uid="uid://dtqqx2f2m8f5u" path="res://assets/models/Buildings/Shops_Cube_009.res" id="3_sf31a"]
+[ext_resource type="ArrayMesh" uid="uid://bb0smvv512sqf" path="res://assets/models/Buildings/Shops_Cube_009.res" id="3_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://ddun150ya33g0" path="res://assets/models/Buildings/TennisCourt_Cube_004.res" id="4_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://cxwj5u7iotrp6" path="res://assets/models/Buildings/Spa_Cube_014.res" id="5_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://c3qblxecbnhmi" path="res://assets/models/Buildings/Hotel_Cube_012.res" id="6_sf31a"]
 [ext_resource type="ArrayMesh" uid="uid://b1bp8ydbe1m6n" path="res://assets/models/Buildings/Restaurant_Cube_013.res" id="7_sf31a"]
+[ext_resource type="ArrayMesh" uid="uid://bmi0te8qhxs4i" path="res://assets/models/Ground/tile_overlay_Plane.res" id="8_ri1er"]
 
 [node name="Node3D" type="Node3D" unique_id=1888715653]
 
@@ -30,3 +31,6 @@ mesh = ExtResource("6_sf31a")
 
 [node name="Restaurant" type="MeshInstance3D" parent="." unique_id=2071285541]
 mesh = ExtResource("7_sf31a")
+
+[node name="Occupied" type="MeshInstance3D" parent="." unique_id=113819009]
+mesh = ExtResource("8_ri1er")

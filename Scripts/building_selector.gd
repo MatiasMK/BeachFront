@@ -28,11 +28,11 @@ func _refresh(_building: String = "", _quantity: int = 0) -> void:
 		elif _buttons.has(building):
 			_update_button(building, entry["quantity"])
 
-func _create_button(container: Control, building: String, scene: PackedScene, qty: int) -> void:
+func _create_button(container: Control, building: String, id : int, qty: int) -> void:
 	var btn = Button.new()
 	btn.text = building + " (" + str(qty) + ")"
 	container.add_child(btn)
-	btn.pressed.connect(_on_building_selected.bind(building, scene))
+	btn.pressed.connect(_on_building_selected.bind(building, id))
 	_buttons[building] = btn
 
 func _remove_button(building: String) -> void:
@@ -42,9 +42,9 @@ func _remove_button(building: String) -> void:
 func _update_button(building: String, qty: int) -> void:
 	_buttons[building].text = building + " (" + str(qty) + ")"
 
-func _on_building_selected(building: String, scene: PackedScene) -> void:
+func _on_building_selected(building: String, id : int)-> void:#scene: PackedScene) -> void:
 	placementGrid.cancel_placement()
-	placementGrid.start_placement(building, scene)
+	placementGrid.selected_id = id
 
 func _on_building_placed(building: String) -> void:
 	inventory.substract_building(building, 1)

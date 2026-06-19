@@ -3,17 +3,17 @@ extends Node3D
 ## List of building scenes to reference.
 const BUILDINGS = {
 	## Daytime.
-	"Hotel": preload("uid://b061u217jqoof"),
-	"Tennis Court": preload("uid://bex6koivmd6gv"),
-	"Restaurant": preload("uid://dfyak3nqjseo0"),
-	"Spa": preload("uid://biawoa84ynn1c"),
-	"Cafe": preload("uid://mff76fra2ulj"),
-	"Club": preload("uid://3fkt4o73fj7v"),
-	"Shops": preload("uid://daajna354d8go"),
+	"Hotel": 5,#preload("uid://b061u217jqoof"),
+	"Tennis Court": 3, #preload("uid://bex6koivmd6gv"),
+	"Restaurant": 6,#preload("uid://dfyak3nqjseo0"),
+	"Spa": 4,#preload("uid://biawoa84ynn1c"),
+	"Cafe": 0, #preload("uid://mff76fra2ulj"),
+	"Club": 1, #preload("uid://3fkt4o73fj7v"),
+	"Shops": 2, #preload("uid://daajna354d8go"),
 	## Nightime.
-	"Little Plant": preload("uid://f6qtwqtuk7xv"),
-	"Bigger Plant": preload("uid://f5huurirpqch"),
-	"Diago Plant": preload("uid://iigpcig122cl")
+	#"Little Plant": preload("uid://f6qtwqtuk7xv"),
+	#"Bigger Plant": preload("uid://f5huurirpqch"),
+	#"Diago Plant": preload("uid://iigpcig122cl")
 }
 ## Amount of each building at start of scene.
 ## Daytime.

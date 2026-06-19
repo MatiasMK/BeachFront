@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dnb528wsjp7tj"]
+
+[ext_resource type="MeshLibrary" uid="uid://vxocxc0aa0l7" path="res://assets/models/Buildings/BuildingsLibrary.meshlib" id="1_7ovhb"]
+[ext_resource type="Script" uid="uid://pseam4k0j380" path="res://util/building_grid_map.gd" id="1_blyyg"]
+[ext_resource type="Script" uid="uid://bw4emvvfsjc0t" path="res://util/inventory.gd" id="2_skl5p"]
+[ext_resource type="Script" uid="uid://bewg3hf7m7wek" path="res://Scripts/building_selector.gd" id="3_7ovhb"]
+
+[node name="BuildingGridMap" type="GridMap" unique_id=797135261]
+mesh_library = ExtResource("1_7ovhb")
+script = ExtResource("1_blyyg")
+
+[node name="Inventory" type="Node3D" parent="." unique_id=777266846]
+script = ExtResource("2_skl5p")
+inv_hotel = 5
+inv_shops = 3
+inv_spa = 1
+
+[node name="BuildingSelector" type="CanvasLayer" parent="." unique_id=13751964]
+script = ExtResource("3_7ovhb")

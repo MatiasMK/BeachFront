@@ -90,7 +90,6 @@ func _on_quit():
 func _on_phase_end():
 	if phase == 1:
 		phase = 2
-		curr_level.start_phase(2) # testing purposes
 		dialogue.run_dialogue(curr_level_ind,phase)
 	else:
 		pass # fin del juego
