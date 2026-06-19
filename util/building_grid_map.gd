@@ -2,7 +2,8 @@ extends GridMap
 
 ## Gridmap of all blocked cells.
 @export var obstacles: GridMap
-
+@export var gridWidth: int = 15
+@export var gridHeight: int = 8
 
 const BUILDING_LEVEL = 0
 const OCCUPIED_ID = 7
@@ -32,6 +33,7 @@ func cancel_placement() -> void:
 		_ghost.queue_free()
 		_ghost = null
 	selected_id = -1
+	rotation_index = 0
 	
 func start_placement(building_name, item_id):
 	var mesh = mesh_library.get_item_mesh(item_id)
@@ -73,10 +75,14 @@ func _input(_event: InputEvent) -> void:
 		else:
 			rotation_index =0
 	if Input.is_action_just_pressed("rotate_right"):
-		if rotation_index == 3:
-			rotation_index = 0
+		if rotation_index == 0:
+			rotation_index = 22
+		elif rotation_index == 22:
+			rotation_index = 16
+		elif rotation_index == 16:
+			rotation_index = 10
 		else:
-			rotation_index += 1
+			rotation_index =0
 		
 		
 	
@@ -97,7 +103,6 @@ func _get_click_position():
 	var current_cell = null
 	# Cast a ray from the camera to the mouse position
 	var cam = get_viewport().get_camera_3d()
-	print("cam: ", cam)  # ¿null?
 	if not cam: return null
 	var mouse_pos = get_viewport().get_mouse_position()
 	
@@ -109,12 +114,10 @@ func _get_click_position():
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
 	var result = get_world_3d().direct_space_state.intersect_ray(query)
-	print("result: ", result)  # ¿tiene algo?
 	if result.is_empty():
 		return null
 	# Convert global collision point to local GridMap space
 	var local_pos = to_local(result.position)
-	print("local_pos: ", local_pos)
 	# Convert local space to specific GridMap Cell coordinates
 	current_cell = local_to_map(local_pos)
 	print("cell: ", current_cell)
@@ -128,7 +131,7 @@ func _pos_is_valid(pos : Vector3i):
 			cell.y += pos.z
 			if cell.x < 0 or cell.y < 0:
 				return false
-			elif cell.x > 15 or cell.y > 8:
+			elif cell.x > gridWidth or cell.y > gridHeight:
 				return false
 			if get_cell_item(Vector3i(cell.x,BUILDING_LEVEL,cell.y)) != INVALID_CELL_ITEM:
 				return false
@@ -141,7 +144,7 @@ func get_building_cells(id : int):
 	match id:
 		0: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(-1,1), Vector2i(-1,0)]
 		1: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(-1,0), Vector2i(0,0)]
-		2: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(2,1), Vector2i(-1,1)]
+		2: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(2,0), Vector2i(-1,0)]
 		3: cells= [Vector2i(0,1), Vector2i(1,1), Vector2i(-1,1), Vector2i(1,0)]
 		4: cells= [Vector2i(0,1), Vector2i(-1,1), Vector2i(1,0), Vector2i(0,0)]
 		5: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)]
@@ -149,7 +152,7 @@ func get_building_cells(id : int):
 		
 	if rotation_index == 0:
 		return cells
-	var result : Array[Vector2i]
+	var result : Array[Vector2i] = []
 	if rotation_index == 10:
 		for cell in cells:
 			result.append(Vector2i(-cell.y,cell.x))

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://chi2d3r68l2uw" path="res://assets/models/Buildings/Spa.glb" id="2_8o500"]
 
 [node name="Spa" type="StaticBody3D" unique_id=221840088]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_2augk")
 offset = Vector3(0.5, 0, 0.5)
 
