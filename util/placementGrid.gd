@@ -37,6 +37,12 @@ func start_placement(building: String, scene: PackedScene) -> void:
 func _input(event: InputEvent) -> void:
 	## If there isn't a building selected, skip the rest.
 	if not object: return
+	## Cancel placement on Escape.
+	if Input.is_action_just_pressed("ui_cancel"):
+		object.queue_free()
+		_current_object_name = ""
+		object = null
+		return
 	## On_click place building on grid.
 	if Input.is_action_just_pressed("left_mouse_click"):
 		## Get current mouse position.
