@@ -10,7 +10,6 @@ const OCCUPIED_ID = 7
 var selected_id = -1
 var _ghost: MeshInstance3D
 var _current_object_name: String = ""
-var _last_print: int = 0
 
 signal building_placed(building_name: String)
 var _overlay_green: Material
@@ -42,7 +41,7 @@ func start_placement(building_name, item_id):
 	selected_id = item_id
 	_current_object_name = building_name
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	## If there isn't a building selected, skip the rest.
 	if selected_id == -1: return
 	## Cancel placement on Escape.
@@ -61,6 +60,7 @@ func _input(event: InputEvent) -> void:
 				set_cell_item(Vector3i(click_pos.x+cell.x,BUILDING_LEVEL,click_pos.z+cell.y),OCCUPIED_ID,rotation_index)
 			set_cell_item(Vector3i(click_pos.x,BUILDING_LEVEL,click_pos.z),selected_id,rotation_index)
 			## Resets selected_id.
+			building_placed.emit(_current_object_name)
 			cancel_placement()
 	
 	if Input.is_action_just_pressed("rotate_left"):
@@ -80,7 +80,7 @@ func _input(event: InputEvent) -> void:
 		
 		
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	## If there isn't a building selected, skip the rest.
 	if selected_id == -1: return
 	## Get current mouse position.
@@ -99,7 +99,6 @@ func _get_click_position():
 	var cam = get_viewport().get_camera_3d()
 	print("cam: ", cam)  # ¿null?
 	if not cam: return null
-	var space_state = get_world_3d().direct_space_state
 	var mouse_pos = get_viewport().get_mouse_position()
 	
 	var origin = cam.project_ray_origin(mouse_pos)#project_ray_origin(mouse_pos)
