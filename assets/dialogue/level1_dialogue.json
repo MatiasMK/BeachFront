@@ -4,20 +4,20 @@
 		"dialogue": 
 		[
 			{
-				"speaker":"beachfront",
-				"text": "old man yaoi"
+				"speaker":"BeachFront Inc.",
+				"text": "Hello employee 2003SD, and welcome to the BeachFrom Incorporated family, where the only thing bigger than your wallet is your joy.\nIn your first day as a BeachFront representative, your task is to renovate this barren plot and create the perfect vacation destination."
 			},
 			{
-				"speaker":"evil santa claus",
-				"text": "hohoho >:)"
+				"speaker":"BeachFront Inc.",
+				"text": "Start by looking at the different buildings BeachFront Incorporated has left at your disposal.\nYou can rotate them by using W and E, or the Left and Right Arrows."
 			},
 			{
-				"speaker":"papu",
-				"text": "no se que poner"
+				"speaker":"BeachFront Inc.",
+				"text": "Use ESC to cancel a placement, for when you want just the right building to make this beach something special.\nSadly the full force of BeachFronts renovation team has not yet arrived to your region.\nSo you will have to work around those pesky obstacles."
 			},
 			{
-				"speaker":"beachfront",
-				"text": "somos malos en realidad muajaja"
+				"speaker":"BeachFront Inc.",
+				"text": "Demonstrate your commitment to the company by using all we have to offer.\nUse all the buildings we provide and your work will be done.\nNow, lets get started with a positive can-do attitude and work on making this boring place into a true home away from home."
 			}
 		]
 	},
@@ -26,8 +26,12 @@
 		"dialogue": 
 		[
 			{
-				"speaker":"beachfront",
-				"text": "dsvfdfdg"
+				"speaker":" ... ",
+				"text": "Mother earth to Calipso... I repeat, Mother earth to Calipso. Good job getting on the inside.\nThose suckers are trying to turn our land into some high society retreat.\nThey want to destroy our home."
+			},
+			{
+				"speaker":"Mother earth",
+				"text": "So we will respond in kind. For now I can only give you some small plants.\nYou will have to do with what we have. Make them see some of what they are trampling over."
 			}
 		]
 	}

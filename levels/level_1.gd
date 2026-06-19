@@ -12,6 +12,9 @@ var accept_input : bool = false # cuando esta corriendo el dialogo o el menu de 
 
 signal end_of_phase
 
+func _ready() -> void:
+	building_grid_map.building_selector.inventory.inventory_empty.connect(_on_inventory_empty)
+
 func _physics_process(_delta):
 	# Cast a ray from the camera to the mouse position
 	var space_state = get_world_3d().direct_space_state
@@ -68,7 +71,9 @@ func start_phase(phase : int):
 		tween.tween_property($DirectionalLight3D, "shadow_opacity", 0,2) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)
-	building_grid_map.building_selector.inventory.inventory_empty.connect(_on_inventory_empty)
+		building_grid_map.building_selector.inventory.add_building("Little Plant", 4)
+		building_grid_map.building_selector.inventory.add_building("Big Plant", 1)
+		building_grid_map.building_selector.inventory.add_building("Pink Flowers", 3)
 	
 func set_accept_input(val):
 	accept_input = val

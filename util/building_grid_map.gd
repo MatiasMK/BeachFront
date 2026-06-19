@@ -172,6 +172,9 @@ func get_building_cells(id : int):
 		4: cells= [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,-1), Vector2i(1,-1)]
 		5: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(0,-1), Vector2i(1,-1)]#hotel
 		6: cells= [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,-1), Vector2i(1,0)]
+		8: cells= [Vector2i(0,0)]
+		9: cells= [Vector2i(0,0), Vector2i(1,0), Vector2i(2,0), Vector2i(3,0)]
+		10: cells= [Vector2i(0,0), Vector2i(1,-1)]
 		
 		
 		

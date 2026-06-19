@@ -11,8 +11,12 @@ script = ExtResource("1_blyyg")
 
 [node name="Inventory" type="Node3D" parent="." unique_id=777266846]
 script = ExtResource("2_skl5p")
-inv_hotel = 5
-inv_shops = 3
+inv_hotel = 1
+inv_tennis_court = 1
+inv_club = 1
+inv_cafe = 1
+inv_shops = 1
+inv_restaurant = 1
 inv_spa = 1
 
 [node name="BuildingSelector" type="CanvasLayer" parent="." unique_id=13751964]
