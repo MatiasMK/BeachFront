@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://djropfltrjq2n" path="res://scenes/main_menu.gd" id="1_jix8l"]
 [ext_resource type="Texture2D" uid="uid://i1264rr8nvkg" path="res://assets/ui/main_menu_bg.png" id="2_rtw2f"]
+[ext_resource type="FontFile" uid="uid://sdfdu786jbgg" path="res://assets/ui/Yesteryear-Regular.ttf" id="3_jk1qb"]
 [ext_resource type="StyleBox" uid="uid://3kdpifxphhaa" path="res://assets/ui/MenuButtonStyle.tres" id="3_oa1go"]
-[ext_resource type="FontFile" uid="uid://xs02rge5wq75" path="res://assets/ui/SEGOESC.TTF" id="3_wgsso"]
+[ext_resource type="FontFile" uid="uid://bsypru6jjb4q1" path="res://assets/ui/StackSansHeadline-VariableFont_wght.ttf" id="3_tbmy8"]
 [ext_resource type="PackedScene" uid="uid://bg2k1p7ds3j7y" path="res://scenes/options.tscn" id="5_8ln24"]
+[ext_resource type="StyleBox" uid="uid://cv3qyyhb03wj5" path="res://assets/ui/MenuButtonStyleHover.tres" id="5_tbmy8"]
 [ext_resource type="AudioStream" uid="uid://cb0gf4wu3bbaf" path="res://assets/music/DavidKBD - Tropical Pack - 13 - Blooming Flowers - Acoustic.ogg" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://dn2xbfducu4hg" path="res://assets/ui/beachfront_logo_small.png" id="9_jk1qb"]
 
 [sub_resource type="Gradient" id="Gradient_d2nv2"]
 colors = PackedColorArray(1, 1, 1, 0.4862745, 0.23040001, 0.4352, 0.64, 0)
@@ -43,6 +46,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wgsso")
 
+[node name="Title" type="Label" parent="." unique_id=862948688]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.34600002
+anchor_bottom = 0.36400002
+offset_left = -138.0
+offset_top = 174.75
+offset_right = 40.679962
+offset_bottom = 120.87802
+theme_override_fonts/font = ExtResource("3_jk1qb")
+theme_override_font_sizes/font_size = 60
+text = "Beachfront"
+horizontal_alignment = 1
+
+[node name="BeachfrontLogo" type="Sprite2D" parent="." unique_id=23601226]
+position = Vector2(328, 213.75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_jk1qb")
+
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=1254910539]
 layout_mode = 1
 anchors_preset = -1
@@ -54,53 +76,41 @@ offset_left = 30.96
 offset_top = 0.0079956055
 offset_right = -48.048004
 offset_bottom = 0.14398193
+theme_override_constants/separation = 12
 
 [node name="PlayButton" type="Button" parent="Buttons" unique_id=1281721479]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36862746, 0.36862746, 0.36862746, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_tbmy8")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("3_oa1go")
+theme_override_styles/pressed = ExtResource("3_oa1go")
+theme_override_styles/hover = ExtResource("5_tbmy8")
+theme_override_styles/disabled = ExtResource("3_oa1go")
+theme_override_styles/focus = ExtResource("3_oa1go")
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="Buttons" unique_id=494661481]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.37036464, 0.37036443, 0.37036446, 1)
+theme_override_fonts/font = ExtResource("3_tbmy8")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("3_oa1go")
+theme_override_styles/pressed = ExtResource("3_oa1go")
+theme_override_styles/hover = ExtResource("5_tbmy8")
 text = "Options"
 
 [node name="ExitButton" type="Button" parent="Buttons" unique_id=613528598]
 visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="." unique_id=862948688]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.34600002
-anchor_bottom = 0.36400002
-offset_left = -78.0
-offset_top = 201.0
-offset_right = 100.67996
-offset_bottom = 147.12802
-theme_override_fonts/font = ExtResource("3_wgsso")
-theme_override_font_sizes/font_size = 45
-text = "Beachfront"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="." unique_id=1818390548]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.744
-anchor_bottom = 1.0
-offset_left = 46.0
-offset_top = 279.0
-offset_right = 0.023986816
-offset_bottom = 275.0
-theme_override_fonts/font = ExtResource("3_wgsso")
-theme_override_font_sizes/font_size = 24
-text = "Exit"
-vertical_alignment = 1
+text = "Exit
+"
 
 [node name="Options" parent="." unique_id=412563756 instance=ExtResource("5_8ln24")]
 visible = false
