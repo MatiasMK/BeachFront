@@ -23,6 +23,7 @@ func _ready():
 	main_menu.connect("play_pressed",load_level.bind(0)) # boton play => nivel 1
 	$UI/PauseMenu/TextureRect/Resume.pressed.connect(_on_resume)
 	$UI/PauseMenu/TextureRect/Quit.pressed.connect(_on_quit)
+	$UI/PauseMenu/TextureRect/Restart.pressed.connect(_on_restart)
 
 func load_level(level_ind : int):
 	if level_ind < 0 or levels.size() <= level_ind:
@@ -95,6 +96,9 @@ func _on_phase_end():
 		dialogue.run_dialogue(curr_level_ind,phase)
 	else:
 		pass # fin del juego
+
+func _on_restart():
+	load_level(curr_level_ind)
 
 func _input(event: InputEvent) -> void:
 	if curr_level_ind != -1:

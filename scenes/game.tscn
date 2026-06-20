@@ -26,24 +26,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_u5sy4")
 
-[node name="TextBox" type="ColorRect" parent="UI/Dialogue" unique_id=1370689539]
+[node name="TextBox" type="Panel" parent="UI/Dialogue" unique_id=1601993028]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -147.0
+offset_left = 50.0
+offset_top = -163.0
+offset_right = -50.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.09536558, 0.18959585, 0.1764895, 1)
+theme_override_styles/panel = ExtResource("3_gee14")
 
 [node name="Speaker" type="Label" parent="UI/Dialogue/TextBox" unique_id=715762019]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 40.0
-offset_top = 20.0
+offset_top = 16.0
 offset_right = 200.0
-offset_bottom = 40.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_0tnpc")
 theme_override_font_sizes/font_size = 20
 text = "test"
 
@@ -58,6 +63,9 @@ offset_right = -40.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_0tnpc")
+text = "test"
 
 [node name="PauseMenu" type="Control" parent="UI" unique_id=356905051]
 visible = false
@@ -70,6 +78,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="Control" parent="UI/PauseMenu" unique_id=1827484047]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 400.0
